@@ -7,7 +7,7 @@
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc",
-    "postinstall": "npx playwright install --with-deps",
+    "postinstall": "npx playwright install",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write ."
   },
