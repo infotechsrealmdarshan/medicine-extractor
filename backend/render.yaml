@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: phoebe-extractor-api
+    env: node
+    plan: free # Can be upgraded later
+    buildCommand: "npm install && npx playwright install --with-deps chromium"
+    startCommand: "npm run start"
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: TRIDENT_USERNAME
+        sync: false # Set this in the Render dashboard
+      - key: TRIDENT_PASSWORD
+        sync: false # Set this in the Render dashboard
+      - key: MYPIN_USERNAME
+        sync: false # Set this in the Render dashboard
+      - key: MYPIN_PASSWORD
+        sync: false # Set this in the Render dashboard
