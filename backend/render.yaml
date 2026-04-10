@@ -3,7 +3,7 @@ services:
     name: phoebe-extractor-api
     env: node
     plan: free # Can be upgraded later
-    buildCommand: "npm install && npx playwright install --with-deps chromium"
+    buildCommand: "npm install && npx playwright install --with-deps"
     startCommand: "npm run start"
     envVars:
       - key: NODE_ENV
