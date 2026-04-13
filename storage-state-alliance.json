@@ -1,0 +1,193 @@
+{
+  "cookies": [
+    {
+      "name": "OptanonAlertBoxClosed",
+      "value": "2026-04-13T10:24:36.975Z",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1807611876,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga",
+      "value": "GA1.1.1268221874.1776075877",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1810635877.307185,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "wba-cust-p",
+      "value": "0",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "wba-cust-t",
+      "value": "43138.69dcc46453abe9.32052286",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "wba-cust-lft",
+      "value": "1",
+      "domain": "www.myahportal.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "WBA-CUST-SESS",
+      "value": "6ebe5d30ed710e1727fe8162326779c7",
+      "domain": "www.myahportal.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Mon+Apr+13+2026+15%3A54%3A40+GMT%2B0530+(India+Standard+Time)&version=202403.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&landingPath=NotLandingPage&groups=C0001%3A1%2CC0003%3A1%2CC0002%3A1&geolocation=%3B&AwaitingReconsent=false",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1807611880,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "test_cookie",
+      "value": "CheckForPermission",
+      "domain": ".doubleclick.net",
+      "path": "/",
+      "expires": 1776076780.150788,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "__eoi",
+      "value": "ID=b2ff6e5522712799:T=1776075878:RT=1776075878:S=AA-AfjY4aaAh8pO6Xr2Eyu36anL-",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1791627878,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "AWSALB",
+      "value": "6eCKwJqRpwHBboic7tZ2SC2CWdttwTfFKGG59jK2YGzPs40aAGM03h78QrN/wBumx3hnkW/PXDFR3tuTrZFkI+prjCtqLGnTQhdemOTAlMB85+9cgb+LTBKG+n6k",
+      "domain": "www.myahportal.co.uk",
+      "path": "/",
+      "expires": 1776680683.736035,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "AWSALBCORS",
+      "value": "6eCKwJqRpwHBboic7tZ2SC2CWdttwTfFKGG59jK2YGzPs40aAGM03h78QrN/wBumx3hnkW/PXDFR3tuTrZFkI+prjCtqLGnTQhdemOTAlMB85+9cgb+LTBKG+n6k",
+      "domain": "www.myahportal.co.uk",
+      "path": "/",
+      "expires": 1776680683.736578,
+      "httpOnly": false,
+      "secure": true,
+      "sameSite": "None"
+    },
+    {
+      "name": "ah",
+      "value": "userid=303074&isdispensing=0&showallproducts=0&ishospital=False&currentorderid=60176786&username=227611&showfavourites=False&showoverspend=False&surgeryid=32347&sitename=MID+SUFFOLK+MEDICAL+SUPPLIES+LTD%2E&repid=%2D1&showthreeboxsearch=True&orderflash=&profession=gp&nameofuser=user&surgeryname=MID+SUFFOLK+MEDICAL+SUPPLIES+LTD%2E&allowautosend=True&prescriptionflash=&supplierid=%2D1&companyid=%2D1&isSpecials=False&sendorderemail=False&hasOrderingUC=True&isautologin=True&surgeryaddress=T%2FA+NEEDHAM+MARKET+PHARMACY%2C+BARKING+ROAD%2C+NEEDHAM+MARKET%2C+SUFFOLK%2C+IP6+8EZ&hasmedsupplies=&hidePrices=False&loginpage=%2Funi2%2Flogin%2Easp%3Fdologout%3D1&customsupplierid=60&customsuppliername=Alliance+Healthcare&showsearchbyletter=False&hasSpecialsUC=False&GoogleAnalyticsConsent=True",
+      "domain": "direct.alliance-healthcare.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "ASPSESSIONIDAESDQDTA",
+      "value": "HPBMIECCDODHMNBHCPNGPFIG",
+      "domain": "direct.alliance-healthcare.co.uk",
+      "path": "/",
+      "expires": -1,
+      "httpOnly": true,
+      "secure": true,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_VXHLBLF2HX",
+      "value": "GS2.1.s1776075877$o1$g1$t1776075884$j53$l0$h0",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1810635884.728577,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "_ga_GKFJWPW45J",
+      "value": "GS2.1.s1776075877$o1$g1$t1776075884$j53$l0$h0",
+      "domain": ".myahportal.co.uk",
+      "path": "/",
+      "expires": 1810635884.733991,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    },
+    {
+      "name": "OptanonConsent",
+      "value": "isGpcEnabled=0&datestamp=Mon+Apr+13+2026+15%3A54%3A45+GMT%2B0530+(India+Standard+Time)&version=202405.1.0&browserGpcFlag=0&isIABGlobal=false&hosts=&landingPath=https%3A%2F%2Fdirect.alliance-healthcare.co.uk%2Funi2%2Fmembers%2F&groups=C0001%3A1%2CC0002%3A0",
+      "domain": ".direct.alliance-healthcare.co.uk",
+      "path": "/",
+      "expires": 1807611885,
+      "httpOnly": false,
+      "secure": false,
+      "sameSite": "Lax"
+    }
+  ],
+  "origins": [
+    {
+      "origin": "https://www.myahportal.co.uk",
+      "localStorage": [
+        {
+          "name": "00D24000000JI09_WEB_STORAGE",
+          "value": "{}"
+        }
+      ]
+    },
+    {
+      "origin": "https://www.google.com",
+      "localStorage": [
+        {
+          "name": "rc::h",
+          "value": "1776075879198"
+        }
+      ]
+    },
+    {
+      "origin": "https://cencoraalliancehealthcareuk.my.site.com",
+      "localStorage": [
+        {
+          "name": "00D24000000JI09_WEB_STORAGE",
+          "value": "{}"
+        }
+      ]
+    }
+  ]
+}
