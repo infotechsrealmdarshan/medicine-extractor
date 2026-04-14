@@ -610,6 +610,18 @@
                 <div class="source-grid" id="alliance-grid"></div>
             </section>
 
+            <!-- SigConnect Section -->
+            <section id="sigconnect-section" class="source-section">
+                <div class="source-header">
+                    <div class="source-title" style="color: #3b82f6;">
+                        <i data-lucide="zap"></i>
+                        SIGMA CONNECT
+                    </div>
+                    <div id="sigconnect-count" style="font-size: 0.9rem; color: #64748b; font-weight: 700;">Scanning...</div>
+                </div>
+                <div class="source-grid" id="sigconnect-grid"></div>
+            </section>
+
             <!-- No Results Panel -->
             <div id="no-results" class="no-results-panel">
                 <div class="no-results-icon">
@@ -725,7 +737,8 @@
                 'aah': { items: results.filter(r => r.source === 'aah'), web: 'AAH Point' },
                 'trident': { items: results.filter(r => r.source === 'trident'), web: 'Trident Online' },
                 'myp-i-n': { items: results.filter(r => r.source === 'myp-i-n'), web: 'MyPin Global' },
-                'alliance': { items: results.filter(r => r.source === 'alliance'), web: 'Alliance Portal' }
+                'alliance': { items: results.filter(r => r.source === 'alliance'), web: 'Alliance Portal' },
+                'sigconnect': { items: results.filter(r => r.source === 'sigconnect'), web: 'Sigma Connect' }
             };
 
             Object.entries(groups).forEach(([source, config]) => {

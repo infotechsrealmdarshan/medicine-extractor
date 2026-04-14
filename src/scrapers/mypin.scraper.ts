@@ -66,7 +66,7 @@ export class MyPinScraper {
       logger.info(`Starting MyPin scrape for query: ${query}`);
 
       const searchUrl = 'https://www.myp-i-n.co.uk/pms/servlet/eboserver?svcname=e10h009&usrurl=../design';
-      
+
       // Step 1: Try direct navigation to search (Optimistic)
       await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
@@ -75,7 +75,7 @@ export class MyPinScraper {
         logger.info('MyPin: Session expired, logging in...');
         await this.login(page);
         await context.storageState({ path: this.storageStatePath });
-        
+
         // Return to search
         await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
       }
@@ -179,7 +179,7 @@ export class MyPinScraper {
   private async login(page: Page) {
     const loginUrl = 'https://www.myp-i-n.co.uk/pms/servlet/twaaserver?svcname=pmsacu&usrurl=../design&usrfunc=LO';
     await page.goto(loginUrl, { waitUntil: 'domcontentloaded' });
-    
+
     await page.waitForSelector('input[name="cuf_id"]');
     await page.fill('input[name="cuf_id"]', (process.env.SUPPLIER_USERNAME || '').trim());
     await page.fill('input[name="cuf_passwd"]', (process.env.SUPPLIER_PASSWORD || '').trim());

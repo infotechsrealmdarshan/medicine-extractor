@@ -239,3 +239,51 @@
 {"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-0329789-zero-results-1776080061529.png","timestamp":"2026-04-13T11:34:21.672Z"}
 {"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1069053-zero-results-1776080071708.png","timestamp":"2026-04-13T11:34:31.934Z"}
 {"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-4023412-zero-results-1776080085436.png","timestamp":"2026-04-13T11:34:45.615Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081158954.png","timestamp":"2026-04-13T11:52:39.250Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081249091.png","timestamp":"2026-04-13T11:54:09.275Z"}
+{"level":"error","message":"SigConnect scraper failed: Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"https://www.sigconnect.co.uk/#/search/\", waiting until \"networkidle\"\u001b[22m\n","timestamp":"2026-04-13T11:54:10.155Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081274578.png","timestamp":"2026-04-13T11:54:34.707Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081283709.png","timestamp":"2026-04-13T11:54:43.887Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081398170.png","timestamp":"2026-04-13T11:56:38.372Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081404531.png","timestamp":"2026-04-13T11:56:44.794Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081543744.png","timestamp":"2026-04-13T11:59:04.024Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081547533.png","timestamp":"2026-04-13T11:59:07.809Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081697362.png","timestamp":"2026-04-13T12:01:37.656Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081700159.png","timestamp":"2026-04-13T12:01:40.426Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081901682.png","timestamp":"2026-04-13T12:05:02.009Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081908770.png","timestamp":"2026-04-13T12:05:08.993Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082072085.png","timestamp":"2026-04-13T12:07:52.267Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082219141.png","timestamp":"2026-04-13T12:10:19.387Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082341663.png","timestamp":"2026-04-13T12:12:21.755Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082587786.png","timestamp":"2026-04-13T12:16:27.960Z"}
+{"level":"error","message":"SigConnect: Search input interaction failed: TypeError: targetInput.pressSequentially is not a function","timestamp":"2026-04-13T12:29:29.940Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083386886.png","timestamp":"2026-04-13T12:29:47.123Z"}
+{"level":"error","message":"SigConnect scrape failed: TypeError: targetInput.pressSequentially is not a function","timestamp":"2026-04-13T12:31:09.005Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083471830.png","timestamp":"2026-04-13T12:31:12.239Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083544740.png","timestamp":"2026-04-13T12:32:24.998Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083645287.png","timestamp":"2026-04-13T12:34:05.568Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083766238.png","timestamp":"2026-04-13T12:36:06.587Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083865893.png","timestamp":"2026-04-13T12:37:46.030Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084074220.png","timestamp":"2026-04-13T12:41:14.354Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084110538.png","timestamp":"2026-04-13T12:41:50.804Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084136056.png","timestamp":"2026-04-13T12:42:16.267Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084376808.png","timestamp":"2026-04-13T12:46:17.007Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084389290.png","timestamp":"2026-04-13T12:46:29.611Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084549670.png","timestamp":"2026-04-13T12:49:09.887Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084639583.png","timestamp":"2026-04-13T12:50:39.749Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084671336.png","timestamp":"2026-04-13T12:51:11.590Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084723317.png","timestamp":"2026-04-13T12:52:03.483Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084738467.png","timestamp":"2026-04-13T12:52:18.601Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084763833.png","timestamp":"2026-04-13T12:52:44.224Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084825527.png","timestamp":"2026-04-13T12:53:46.055Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084846476.png","timestamp":"2026-04-13T12:54:06.667Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084979201.png","timestamp":"2026-04-13T12:56:19.497Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776139732075.png","timestamp":"2026-04-14T04:08:52.270Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776139967246.png","timestamp":"2026-04-14T04:12:47.464Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776140406679.png","timestamp":"2026-04-14T04:20:06.944Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140477647.png","timestamp":"2026-04-14T04:21:17.813Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140521007.png","timestamp":"2026-04-14T04:22:01.687Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140644461.png","timestamp":"2026-04-14T04:24:04.790Z"}
+{"level":"error","message":"SigConnect (Puppeteer) scrape failed: ReferenceError: query is not defined","timestamp":"2026-04-14T04:26:44.571Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140806926.png","timestamp":"2026-04-14T04:26:47.120Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140834116.png","timestamp":"2026-04-14T04:27:14.340Z"}

@@ -260,7 +260,7 @@ export class AahScraper {
     // Optimistic approach: try the target URL directly first.
     // If no targetUrl is provided, default to AllProducts.
     const urlToCheck = targetUrl || this.getAllProductsUrl();
-    
+
     logger.info(`AAH: Checking authentication by navigating to: ${urlToCheck}`);
     const response = await page.goto(urlToCheck, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await this.acceptCookies(page);
@@ -379,6 +379,7 @@ export class AahScraper {
 
           return items || noResults || hasResultCount || stillLogin;
         },
+        undefined,
         { timeout: 30000 },
       )
       .catch(() => {
@@ -435,7 +436,7 @@ export class AahScraper {
 
             const text = ((item as HTMLElement).innerText || item.textContent || '').toLowerCase();
             const html = item.innerHTML.toLowerCase();
-            
+
             // Regex fallback for price if class selectors miss it
             let finalPrice = price;
             if (finalPrice === 0) {

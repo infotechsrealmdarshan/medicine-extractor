@@ -231,7 +231,7 @@ export class TridentScraper {
   private async ensureAuthenticated(page: Page, targetUrl?: string) {
     const urlToCheck = targetUrl || this.getAllProductsUrl();
     logger.info(`Trident: Checking authentication via navigation to: ${urlToCheck}`);
-    
+
     const response = await page.goto(urlToCheck, { waitUntil: 'domcontentloaded', timeout: 60000 });
     await this.acceptCookies(page);
 
@@ -285,7 +285,7 @@ export class TridentScraper {
     // before we check count – the old code checked count immediately and always got 0.
     await page
       .waitForSelector(SEARCH_SELECTOR, { state: 'visible', timeout: 15000 })
-      .catch(() => {});
+      .catch(() => { });
 
     const searchInput = page.locator(SEARCH_SELECTOR).first();
 
@@ -295,18 +295,18 @@ export class TridentScraper {
     }
 
     await searchInput.waitFor({ state: 'visible', timeout: 5000 });
-    await searchInput.click().catch(() => {});
+    await searchInput.click().catch(() => { });
     await searchInput.pressSequentially(query, { delay: 30 });
-    await searchInput.press('Enter').catch(() => {});
+    await searchInput.press('Enter').catch(() => { });
 
     const searchButton = page
       .locator('button[type="submit"], .cc_quick_search button, [class*="search"] button')
       .first();
     if ((await searchButton.count()) > 0) {
-      await searchButton.click({ timeout: 5000 }).catch(() => {});
+      await searchButton.click({ timeout: 5000 }).catch(() => { });
     }
 
-    await page.waitForLoadState('domcontentloaded').catch(() => {});
+    await page.waitForLoadState('domcontentloaded').catch(() => { });
     return true;
   }
 
@@ -386,7 +386,7 @@ export class TridentScraper {
       const stillLogin = bodyText.includes("enter your details below and we'll do the rest");
 
       return items || noResults || stillLogin;
-    }, { timeout: 30000 }).catch(() => {
+    }, undefined, { timeout: 30000 }).catch(() => {
       logger.warn('Trident: waitForResults timed out. Proceeding with extraction anyway.');
     });
 
@@ -427,12 +427,12 @@ export class TridentScraper {
           .map((item) => {
             const titleEl = item.querySelector(
               '.flexFontProductTitle, .cc_product_link, p.cc_product_link, ' +
-                '.product-link, [class*="productTitle"], td a, td:first-child, .cc_product_name',
+              '.product-link, [class*="productTitle"], td a, td:first-child, .cc_product_name',
             ) as HTMLElement | null;
 
             const priceEl = item.querySelector(
               '.cc_price, .price, .plp-price-col, [class*="price"], ' +
-                'td[class*="price"], td:nth-child(3)',
+              'td[class*="price"], td:nth-child(3)',
             ) as HTMLElement | null;
 
             const title = titleEl?.innerText.trim() || '';
@@ -441,7 +441,7 @@ export class TridentScraper {
 
             const text = ((item as HTMLElement).innerText || item.textContent || '').toLowerCase();
             const html = item.innerHTML.toLowerCase();
-            
+
             // Regex fallback for price
             let finalPrice = price;
             if (finalPrice === 0) {

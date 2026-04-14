@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "storage-state-*.json",
+    "screenshots/*",
+    "*.log",
+    "test/*",
+    ".aah_session/*",
+    ".trident_session/*"
+  ],
+  "watch": ["src"],
+  "ext": "ts,js,json"
+}

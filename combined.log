@@ -2971,3 +2971,842 @@
 {"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T11:34:47.190Z"}
 {"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T11:34:51.252Z"}
 {"level":"info","message":"MyPin: No results found or timeout for 4023412","timestamp":"2026-04-13T11:34:57.593Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:43:29.806Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:44:15.757Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:50:40.822Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:50:51.475Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:52:30.481Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:52:30.482Z"}
+{"level":"info","message":"SigConnect: Starting authentication...","timestamp":"2026-04-13T11:52:31.146Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:52:31.181Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:52:31.539Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:52:31.540Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:52:31.541Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:52:31.565Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:52:31.566Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:52:37.988Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:52:38.953Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:52:38.954Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081158954.png","timestamp":"2026-04-13T11:52:39.250Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:52:42.109Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:52:56.922Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:53:24.482Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:53:35.936Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:53:47.279Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:54:02.432Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:54:02.433Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:54:03.037Z"}
+{"level":"info","message":"SigConnect: Starting authentication...","timestamp":"2026-04-13T11:54:03.208Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:54:03.619Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:54:03.620Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:54:03.622Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:54:03.623Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:54:03.625Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:54:07.797Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:54:09.090Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:54:09.091Z"}
+{"level":"info","message":"SigConnect: Login submitted.","timestamp":"2026-04-13T11:54:09.234Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081249091.png","timestamp":"2026-04-13T11:54:09.275Z"}
+{"level":"info","message":"SigConnect: Authenticated.","timestamp":"2026-04-13T11:54:09.993Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T11:54:10.004Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 1121441","timestamp":"2026-04-13T11:54:10.152Z"}
+{"level":"error","message":"SigConnect scraper failed: Error: page.goto: Page crashed\nCall log:\n\u001b[2m  - navigating to \"https://www.sigconnect.co.uk/#/search/\", waiting until \"networkidle\"\u001b[22m\n","timestamp":"2026-04-13T11:54:10.155Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:54:12.663Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:54:29.355Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:54:29.356Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:54:29.996Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:54:30.404Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:54:30.406Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:54:30.412Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:54:30.424Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:54:30.425Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:54:34.304Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T11:54:34.356Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:54:34.577Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:54:34.577Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081274578.png","timestamp":"2026-04-13T11:54:34.707Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:54:38.917Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:54:38.953Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:54:38.953Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:54:39.450Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:54:39.995Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:54:39.996Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:54:40.011Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:54:40.086Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:54:40.088Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:54:43.448Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:54:43.708Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:54:43.708Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081283709.png","timestamp":"2026-04-13T11:54:43.887Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T11:54:44.512Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T11:54:44.909Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:54:47.957Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:54:56.769Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:55:01.638Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:55:04.853Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:55:32.581Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:55:43.555Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:55:55.335Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T11:56:07.291Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:56:31.448Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:56:31.449Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:56:32.754Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:56:33.025Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:56:33.025Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:56:33.027Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:56:33.028Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:56:33.029Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:56:37.317Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:56:38.169Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:56:38.169Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081398170.png","timestamp":"2026-04-13T11:56:38.372Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T11:56:40.776Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 0 products.","timestamp":"2026-04-13T11:56:44.530Z"}
+{"level":"warn","message":"AAH: No products found for \"1121441\". Saving diagnostic screenshot.","timestamp":"2026-04-13T11:56:44.530Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081404531.png","timestamp":"2026-04-13T11:56:44.794Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 1121441","timestamp":"2026-04-13T11:56:48.834Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T11:56:51.925Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T11:58:54.380Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T11:58:54.380Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T11:58:54.491Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T11:58:54.891Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T11:58:54.907Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T11:58:54.908Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T11:58:54.911Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T11:58:54.911Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T11:58:57.581Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T11:58:58.610Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T11:59:03.479Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T11:59:03.743Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T11:59:03.744Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081543744.png","timestamp":"2026-04-13T11:59:04.024Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 0 products.","timestamp":"2026-04-13T11:59:07.532Z"}
+{"level":"warn","message":"AAH: No products found for \"1121441\". Saving diagnostic screenshot.","timestamp":"2026-04-13T11:59:07.533Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081547533.png","timestamp":"2026-04-13T11:59:07.809Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 1121441","timestamp":"2026-04-13T11:59:10.603Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:00:13.212Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:00:30.786Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T12:01:26.829Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T12:01:26.830Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T12:01:27.419Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T12:01:28.071Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T12:01:28.074Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T12:01:28.075Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T12:01:28.079Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:01:28.080Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T12:01:31.386Z"}
+{"level":"info","message":"SigConnect: Entering 1121441 into Pipcode field.","timestamp":"2026-04-13T12:01:31.442Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:01:33.414Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:01:36.404Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:01:37.362Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:01:37.362Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081697362.png","timestamp":"2026-04-13T12:01:37.656Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:01:40.159Z"}
+{"level":"warn","message":"AAH: No products found for \"1121441\". Saving diagnostic screenshot.","timestamp":"2026-04-13T12:01:40.159Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081700159.png","timestamp":"2026-04-13T12:01:40.426Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 1121441","timestamp":"2026-04-13T12:01:43.645Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:03:07.546Z"}
+{"level":"info","message":"Controller: Searching for 1121441","timestamp":"2026-04-13T12:04:55.932Z"}
+{"level":"info","message":"SearchService.search called with query: 1121441","timestamp":"2026-04-13T12:04:55.935Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 1121441","timestamp":"2026-04-13T12:04:56.570Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 1121441","timestamp":"2026-04-13T12:04:57.153Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=1121441&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:04:57.156Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=1121441","timestamp":"2026-04-13T12:04:57.236Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 1121441","timestamp":"2026-04-13T12:04:57.279Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=1121441","timestamp":"2026-04-13T12:04:57.280Z"}
+{"level":"info","message":"SigConnect: Performing search for: 1121441","timestamp":"2026-04-13T12:04:59.999Z"}
+{"level":"info","message":"SigConnect: Entering 1121441 into Pipcode field.","timestamp":"2026-04-13T12:05:00.073Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:05:01.273Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:05:01.681Z"}
+{"level":"warn","message":"Trident: No products extracted for 1121441. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:05:01.681Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-1121441-zero-results-1776081901682.png","timestamp":"2026-04-13T12:05:02.009Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:05:05.011Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:05:05.143Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:05:08.769Z"}
+{"level":"warn","message":"AAH: No products found for \"1121441\". Saving diagnostic screenshot.","timestamp":"2026-04-13T12:05:08.770Z"}
+{"level":"error","message":"AAH: Failure screenshot saved to D:\\medicing extractor\\screenshots\\aah-failure-1121441-zero-results-1776081908770.png","timestamp":"2026-04-13T12:05:08.993Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 1121441","timestamp":"2026-04-13T12:05:12.837Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:07:47.194Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:07:47.194Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:07:47.314Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:07:47.732Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:07:47.747Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:07:47.748Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:07:47.751Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:07:47.752Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:07:50.628Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:07:50.714Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:07:51.792Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:07:52.085Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:07:52.085Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082072085.png","timestamp":"2026-04-13T12:07:52.267Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:07:55.808Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:07:56.814Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:08:00.862Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:08:03.616Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:09:27.233Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:10:13.345Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:10:13.346Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:10:13.947Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:10:14.609Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:10:14.610Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:10:14.611Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:10:14.612Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:10:14.612Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:10:17.396Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:10:17.475Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:10:18.627Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:10:19.140Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:10:19.140Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082219141.png","timestamp":"2026-04-13T12:10:19.387Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 2 products.","timestamp":"2026-04-13T12:10:22.583Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:10:23.121Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:10:26.918Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:10:30.322Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:11:23.717Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:12:16.650Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:12:16.651Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:12:17.324Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:12:17.957Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:12:17.961Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:12:17.966Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:12:18.026Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:12:18.027Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:12:20.544Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:12:20.593Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:12:21.188Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:12:21.662Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:12:21.662Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082341663.png","timestamp":"2026-04-13T12:12:21.755Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:12:25.605Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:12:25.666Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:12:29.428Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:12:33.501Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:15:52.427Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:16:21.580Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:16:21.581Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:16:22.115Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:16:22.848Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:16:22.849Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:16:22.859Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:16:22.887Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:16:22.889Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:16:26.280Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:16:26.325Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:16:27.478Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:16:27.786Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:16:27.786Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776082587786.png","timestamp":"2026-04-13T12:16:27.960Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:16:30.650Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:16:31.419Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:16:34.383Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:16:38.473Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:29:17.889Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:29:25.835Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:29:25.836Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:29:26.543Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:29:27.138Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:29:27.141Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:29:27.159Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:29:27.160Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:29:27.167Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:29:29.855Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:29:29.904Z"}
+{"level":"error","message":"SigConnect: Search input interaction failed: TypeError: targetInput.pressSequentially is not a function","timestamp":"2026-04-13T12:29:29.940Z"}
+{"level":"warn","message":"SigConnect: Search returned 0 for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:29:29.940Z"}
+{"level":"warn","message":"SigConnect: Search failed. Attempting re-login...","timestamp":"2026-04-13T12:29:30.044Z"}
+{"level":"info","message":"SigConnect: Starting authentication...","timestamp":"2026-04-13T12:29:30.045Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:29:32.719Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:29:36.463Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:29:36.464Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:29:37.173Z"}
+{"level":"info","message":"SigConnect: Starting authentication...","timestamp":"2026-04-13T12:29:37.736Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:29:37.798Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:29:37.799Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:29:37.826Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:29:37.834Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:29:37.835Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:29:40.305Z"}
+{"level":"info","message":"Trident: Waiting for results or \"no results\" indicator...","timestamp":"2026-04-13T12:29:40.500Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:29:46.886Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:29:46.886Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083386886.png","timestamp":"2026-04-13T12:29:47.123Z"}
+{"level":"info","message":"SigConnect: Login submitted.","timestamp":"2026-04-13T12:29:47.975Z"}
+{"level":"info","message":"SigConnect: Authenticated.","timestamp":"2026-04-13T12:29:48.277Z"}
+{"level":"info","message":"SigConnect: Performing search for: 3976958","timestamp":"2026-04-13T12:29:48.289Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:29:50.969Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:30:26.558Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:30:32.417Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:30:52.737Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:31:04.497Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:31:04.498Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:31:05.100Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:31:05.851Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:31:05.858Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:31:05.991Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:31:06.060Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:31:06.061Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:31:06.063Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:31:06.064Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:31:08.937Z"}
+{"level":"error","message":"SigConnect scrape failed: TypeError: targetInput.pressSequentially is not a function","timestamp":"2026-04-13T12:31:09.005Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:31:10.961Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:31:11.826Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:31:11.828Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083471830.png","timestamp":"2026-04-13T12:31:12.239Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:31:12.464Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:31:16.223Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:31:21.878Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:32:05.434Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:32:18.450Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:32:18.452Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:32:19.089Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:32:20.076Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:32:20.079Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:32:20.080Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:32:20.085Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:32:20.087Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:32:20.094Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:32:20.095Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:32:23.685Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:32:24.430Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:32:24.739Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:32:24.739Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083544740.png","timestamp":"2026-04-13T12:32:24.998Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:32:26.082Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:32:29.244Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:32:32.139Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:33:57.880Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:33:57.881Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:33:58.426Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:33:59.133Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:33:59.135Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:33:59.138Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:33:59.160Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:33:59.161Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:33:59.178Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:33:59.179Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:34:02.267Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:34:03.146Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:34:05.287Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:34:05.287Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083645287.png","timestamp":"2026-04-13T12:34:05.568Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:34:07.785Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:34:11.054Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:35:32.647Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:35:59.795Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:35:59.796Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:36:00.598Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:36:01.063Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:36:01.064Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:36:01.183Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:36:01.184Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:36:01.185Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:36:01.191Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:36:01.191Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:36:04.330Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:36:05.068Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:36:06.237Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:36:06.237Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083766238.png","timestamp":"2026-04-13T12:36:06.587Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:36:08.740Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:36:09.863Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:36:12.656Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:37:19.263Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:37:40.120Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:37:40.121Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:37:40.904Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:37:41.357Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:37:41.359Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:37:41.461Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:37:41.462Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:37:41.464Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:37:41.464Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:37:41.465Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:37:44.360Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:37:45.594Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:37:45.892Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:37:45.893Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776083865893.png","timestamp":"2026-04-13T12:37:46.030Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:37:48.212Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:37:49.889Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:37:52.620Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:39:48.279Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:40:55.482Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:41:02.406Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:41:08.798Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:41:08.798Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:41:09.200Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:41:09.692Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:41:09.695Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:41:09.695Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:41:09.712Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:41:09.713Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:41:13.927Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:41:14.219Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:41:14.219Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084074220.png","timestamp":"2026-04-13T12:41:14.354Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:41:17.453Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:41:21.291Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:41:25.486Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:41:35.265Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:41:42.042Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:41:43.880Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:41:43.881Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:41:44.574Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:41:45.066Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:41:45.068Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:41:45.081Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:41:45.082Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:41:45.141Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:41:45.144Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:41:45.145Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:41:47.823Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:41:48.697Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:41:50.537Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:41:50.537Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084110538.png","timestamp":"2026-04-13T12:41:50.804Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 7 products.","timestamp":"2026-04-13T12:41:53.297Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:41:55.991Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:42:09.899Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:42:09.900Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:42:10.616Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:42:11.051Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:42:11.052Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:42:11.159Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:42:11.162Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:42:11.171Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:42:11.206Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:42:11.207Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:42:13.542Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:42:15.372Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:42:15.805Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:42:16.055Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:42:16.056Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084136056.png","timestamp":"2026-04-13T12:42:16.267Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 7 products.","timestamp":"2026-04-13T12:42:19.056Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:42:21.659Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:45:36.882Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:46:10.620Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:46:10.622Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:46:11.353Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:46:11.914Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:46:11.932Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:46:11.933Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:46:11.934Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:46:11.934Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:46:11.941Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:46:11.941Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:46:14.903Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:46:16.048Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:46:16.808Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:46:16.808Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084376808.png","timestamp":"2026-04-13T12:46:17.007Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:46:20.054Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 7 products.","timestamp":"2026-04-13T12:46:20.391Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:46:22.901Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:46:22.958Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:46:22.959Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:46:23.588Z"}
+{"level":"info","message":"SigConnect: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:46:23.988Z"}
+{"level":"info","message":"SigConnect: Checking authentication by navigating to: https://www.sigconnect.co.uk/#/search/","timestamp":"2026-04-13T12:46:23.989Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:46:24.109Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:46:24.110Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:46:24.111Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:46:24.113Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:46:24.114Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:46:26.596Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:46:27.762Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:46:29.290Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:46:29.290Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084389290.png","timestamp":"2026-04-13T12:46:29.611Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 7 products.","timestamp":"2026-04-13T12:46:32.114Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:46:34.736Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:47:52.768Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:48:23.460Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:49:03.480Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:49:03.481Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:49:05.386Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:49:05.606Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:49:05.607Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:49:05.610Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:49:05.611Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:49:05.616Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:49:09.378Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:49:09.669Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:49:09.670Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084549670.png","timestamp":"2026-04-13T12:49:09.887Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:49:13.772Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:49:17.662Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:49:21.698Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:49:22.120Z"}
+{"level":"warn","message":"SigConnect: Failed to load session.","timestamp":"2026-04-13T12:49:22.145Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:49:24.227Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 7 products.","timestamp":"2026-04-13T12:49:29.695Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-13T12:49:29.708Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:49:32.533Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:50:19.707Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:50:19.708Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:50:20.348Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:50:21.145Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:50:21.149Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:50:21.151Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:50:21.171Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:50:21.172Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:50:21.173Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:50:21.197Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:50:25.458Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:50:34.428Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:50:34.429Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:50:35.136Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:50:35.763Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:50:35.764Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:50:35.827Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:50:35.827Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:50:35.829Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:50:35.844Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:50:35.856Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:50:37.810Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:50:39.371Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:50:39.583Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:50:39.583Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084639583.png","timestamp":"2026-04-13T12:50:39.749Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:50:43.262Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:50:43.293Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084643262.png","timestamp":"2026-04-13T12:50:43.462Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:50:47.307Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:50:51.327Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:51:07.335Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:51:07.336Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:51:07.452Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:51:07.866Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:51:07.866Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:51:07.869Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:51:07.869Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:51:07.870Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:51:08.147Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:51:08.188Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:51:10.337Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:51:11.107Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:51:11.335Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:51:11.336Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084671336.png","timestamp":"2026-04-13T12:51:11.590Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:51:15.766Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084675766.png","timestamp":"2026-04-13T12:51:15.927Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:51:18.764Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:51:23.472Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:51:27.522Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:51:46.544Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:51:58.067Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:51:58.068Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:51:58.733Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:51:59.541Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:51:59.544Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:51:59.546Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:51:59.568Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:51:59.584Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:51:59.586Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:51:59.606Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:52:01.660Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:52:02.828Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:03.316Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:52:03.316Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084723317.png","timestamp":"2026-04-13T12:52:03.483Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:06.125Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084726126.png","timestamp":"2026-04-13T12:52:06.343Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:52:07.221Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:52:10.994Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:52:13.976Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:52:13.976Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:52:14.192Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:52:14.239Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:52:14.309Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:52:14.506Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:52:14.506Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:52:14.512Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:52:14.513Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:52:14.523Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:52:15.032Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:52:16.172Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:52:18.192Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:18.467Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:52:18.467Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084738467.png","timestamp":"2026-04-13T12:52:18.601Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:20.599Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084740599.png","timestamp":"2026-04-13T12:52:20.746Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:52:22.004Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:52:26.091Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:52:30.379Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:52:36.981Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:52:36.981Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:52:37.162Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:52:37.191Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:52:37.247Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:52:37.473Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:52:37.475Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:52:37.476Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:52:37.476Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:52:37.476Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:52:38.928Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:52:41.537Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:43.383Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084763384.png","timestamp":"2026-04-13T12:52:43.656Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:52:43.833Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:52:43.833Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084763833.png","timestamp":"2026-04-13T12:52:44.224Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:52:47.675Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:52:51.400Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:52:53.331Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:53:22.936Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:53:39.904Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:53:39.905Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:53:40.716Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:53:41.411Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:53:41.417Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:53:41.424Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:53:41.464Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:53:41.468Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:53:41.478Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:53:41.496Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:53:43.869Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:53:45.241Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:53:45.526Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:53:45.527Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084825527.png","timestamp":"2026-04-13T12:53:46.055Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:53:48.948Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:53:49.269Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084829270.png","timestamp":"2026-04-13T12:53:49.514Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:53:53.280Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:53:56.925Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:54:01.071Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:54:01.072Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:54:01.241Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:54:01.254Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:54:01.323Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:54:01.511Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:54:01.524Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:54:01.525Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:54:01.526Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:54:01.527Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:54:03.096Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:54:06.064Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:54:06.476Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:54:06.476Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084846476.png","timestamp":"2026-04-13T12:54:06.667Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:54:08.465Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776084848465.png","timestamp":"2026-04-13T12:54:08.624Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:54:09.648Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:54:13.423Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:54:17.405Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:54:55.388Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:56:11.312Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-13T12:56:13.955Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-13T12:56:13.956Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-13T12:56:14.783Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-13T12:56:15.275Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-13T12:56:15.305Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-13T12:56:15.308Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-13T12:56:15.309Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-13T12:56:15.310Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-13T12:56:15.346Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-13T12:56:15.347Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-13T12:56:17.305Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-13T12:56:18.927Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-13T12:56:19.200Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-13T12:56:19.200Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776084979201.png","timestamp":"2026-04-13T12:56:19.497Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-13T12:56:22.684Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-13T12:56:24.101Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-13T12:56:27.933Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-13T12:56:30.976Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-13T12:56:45.139Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:05:45.689Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-14T04:08:30.694Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-14T04:08:30.695Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-14T04:08:31.420Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-14T04:08:32.007Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:08:32.008Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-14T04:08:32.067Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-14T04:08:32.103Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-14T04:08:32.104Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-14T04:08:32.115Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:08:32.153Z"}
+{"level":"info","message":"SigConnect: Starting authentication...","timestamp":"2026-04-14T04:08:35.518Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:08:38.883Z"}
+{"level":"warn","message":"Trident: Search redirected back to login, retrying authentication once...","timestamp":"2026-04-14T04:08:39.155Z"}
+{"level":"info","message":"Trident: Logging in in background mode...","timestamp":"2026-04-14T04:08:39.155Z"}
+{"level":"info","message":"AAH: Session expired or not found – authenticating...","timestamp":"2026-04-14T04:08:42.718Z"}
+{"level":"info","message":"SigConnect: Login submitted.","timestamp":"2026-04-14T04:08:43.549Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:08:43.561Z"}
+{"level":"info","message":"SigConnect: Authenticated.","timestamp":"2026-04-14T04:08:43.561Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-14T04:08:43.567Z"}
+{"level":"info","message":"AAH: Logging in...","timestamp":"2026-04-14T04:08:43.872Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-14T04:08:48.940Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776139728941.png","timestamp":"2026-04-14T04:08:49.216Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-14T04:08:50.413Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:08:52.074Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:08:52.074Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776139732075.png","timestamp":"2026-04-14T04:08:52.270Z"}
+{"level":"info","message":"AAH: Login successful","timestamp":"2026-04-14T04:09:21.010Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:09:40.971Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:11:26.580Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-14T04:12:40.485Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-14T04:12:40.486Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-14T04:12:40.885Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-14T04:12:41.377Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-14T04:12:41.379Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-14T04:12:41.382Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:12:41.383Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-14T04:12:41.409Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-14T04:12:41.594Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:12:41.612Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-14T04:12:44.116Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:12:44.511Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 0 products.","timestamp":"2026-04-14T04:12:45.535Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3976958-1776139965535.png","timestamp":"2026-04-14T04:12:45.899Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:12:46.791Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:12:47.245Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:12:47.245Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776139967246.png","timestamp":"2026-04-14T04:12:47.464Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:12:52.901Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-14T04:12:56.943Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:13:01.726Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:19:01.248Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:19:24.589Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:19:34.960Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:19:48.491Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:19:53.616Z"}
+{"level":"info","message":"Controller: Searching for 3976958","timestamp":"2026-04-14T04:19:59.851Z"}
+{"level":"info","message":"SearchService.search called with query: 3976958","timestamp":"2026-04-14T04:19:59.852Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3976958","timestamp":"2026-04-14T04:20:00.362Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3976958","timestamp":"2026-04-14T04:20:01.055Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3976958","timestamp":"2026-04-14T04:20:01.135Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3976958","timestamp":"2026-04-14T04:20:01.136Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3976958","timestamp":"2026-04-14T04:20:01.138Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3976958&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:20:01.139Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3976958","timestamp":"2026-04-14T04:20:01.249Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:20:01.262Z"}
+{"level":"info","message":"SigConnect: Entering 3976958 into Pipcode field.","timestamp":"2026-04-14T04:20:03.685Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:20:04.039Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:20:05.209Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:20:06.678Z"}
+{"level":"warn","message":"Trident: No products extracted for 3976958. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:20:06.678Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3976958-zero-results-1776140406679.png","timestamp":"2026-04-14T04:20:06.944Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:20:07.522Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:20:07.525Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:20:10.327Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:20:14.107Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3976958","timestamp":"2026-04-14T04:20:16.488Z"}
+{"level":"info","message":"Controller: Searching for 3969359","timestamp":"2026-04-14T04:21:12.002Z"}
+{"level":"info","message":"SearchService.search called with query: 3969359","timestamp":"2026-04-14T04:21:12.002Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3969359","timestamp":"2026-04-14T04:21:12.161Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3969359","timestamp":"2026-04-14T04:21:12.190Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:21:12.252Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3969359","timestamp":"2026-04-14T04:21:12.473Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3969359","timestamp":"2026-04-14T04:21:12.476Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3969359","timestamp":"2026-04-14T04:21:12.477Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3969359","timestamp":"2026-04-14T04:21:12.479Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3969359&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:21:12.479Z"}
+{"level":"info","message":"SigConnect: Entering 3969359 into Pipcode field.","timestamp":"2026-04-14T04:21:14.046Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:21:14.397Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:21:17.335Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:21:17.627Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:21:17.630Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:21:17.646Z"}
+{"level":"warn","message":"Trident: No products extracted for 3969359. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:21:17.646Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140477647.png","timestamp":"2026-04-14T04:21:17.813Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:21:23.673Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:21:27.417Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3969359","timestamp":"2026-04-14T04:21:28.415Z"}
+{"level":"info","message":"Controller: Searching for 3969359","timestamp":"2026-04-14T04:21:54.556Z"}
+{"level":"info","message":"SearchService.search called with query: 3969359","timestamp":"2026-04-14T04:21:54.557Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3969359","timestamp":"2026-04-14T04:21:54.702Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3969359","timestamp":"2026-04-14T04:21:55.020Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3969359","timestamp":"2026-04-14T04:21:55.021Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3969359","timestamp":"2026-04-14T04:21:55.024Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3969359&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:21:55.026Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3969359","timestamp":"2026-04-14T04:21:55.055Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3969359","timestamp":"2026-04-14T04:21:55.487Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:21:55.513Z"}
+{"level":"info","message":"SigConnect: Entering 3969359 into Pipcode field.","timestamp":"2026-04-14T04:21:57.946Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:21:58.388Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:21:59.005Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:22:01.006Z"}
+{"level":"warn","message":"Trident: No products extracted for 3969359. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:22:01.007Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140521007.png","timestamp":"2026-04-14T04:22:01.687Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:22:02.002Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:22:02.040Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:22:05.307Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:22:09.191Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3969359","timestamp":"2026-04-14T04:22:10.709Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:23:02.391Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:23:32.474Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:23:42.427Z"}
+{"level":"info","message":"Controller: Searching for 3969359","timestamp":"2026-04-14T04:23:57.339Z"}
+{"level":"info","message":"SearchService.search called with query: 3969359","timestamp":"2026-04-14T04:23:57.340Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3969359","timestamp":"2026-04-14T04:23:57.760Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3969359","timestamp":"2026-04-14T04:23:58.251Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3969359","timestamp":"2026-04-14T04:23:58.319Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3969359","timestamp":"2026-04-14T04:23:58.320Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3969359","timestamp":"2026-04-14T04:23:58.324Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3969359&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:23:58.325Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3969359","timestamp":"2026-04-14T04:23:58.343Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:23:58.359Z"}
+{"level":"info","message":"SigConnect: Entering 3969359 into Pipcode field.","timestamp":"2026-04-14T04:24:00.721Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:24:01.079Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:24:03.711Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:24:04.460Z"}
+{"level":"warn","message":"Trident: No products extracted for 3969359. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:24:04.460Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:24:04.591Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:24:04.599Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140644461.png","timestamp":"2026-04-14T04:24:04.790Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:24:07.389Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:24:11.161Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3969359","timestamp":"2026-04-14T04:24:13.865Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:24:56.705Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:26:06.611Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:26:16.818Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:26:26.550Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:26:33.292Z"}
+{"level":"info","message":"Controller: Searching for 3969359","timestamp":"2026-04-14T04:26:41.288Z"}
+{"level":"info","message":"SearchService.search called with query: 3969359","timestamp":"2026-04-14T04:26:41.289Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3969359","timestamp":"2026-04-14T04:26:41.696Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3969359","timestamp":"2026-04-14T04:26:42.291Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3969359&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:26:42.295Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3969359","timestamp":"2026-04-14T04:26:42.351Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3969359","timestamp":"2026-04-14T04:26:42.355Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3969359","timestamp":"2026-04-14T04:26:42.372Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3969359","timestamp":"2026-04-14T04:26:42.373Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:26:42.460Z"}
+{"level":"info","message":"SigConnect: Entering 3969359 into Pipcode field.","timestamp":"2026-04-14T04:26:44.551Z"}
+{"level":"error","message":"SigConnect (Puppeteer) scrape failed: ReferenceError: query is not defined","timestamp":"2026-04-14T04:26:44.571Z"}
+{"level":"warn","message":"SigConnect: Failure screenshot saved to D:\\medicing extractor\\screenshots\\sigconnect-failure-3969359-1776140804572.png","timestamp":"2026-04-14T04:26:44.705Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:26:46.244Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:26:46.923Z"}
+{"level":"warn","message":"Trident: No products extracted for 3969359. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:26:46.925Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140806926.png","timestamp":"2026-04-14T04:26:47.120Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:26:51.576Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:26:55.344Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3969359","timestamp":"2026-04-14T04:26:57.808Z"}
+{"level":"info","message":"Server is running on http://localhost:3000","timestamp":"2026-04-14T04:27:06.651Z"}
+{"level":"info","message":"Controller: Searching for 3969359","timestamp":"2026-04-14T04:27:08.776Z"}
+{"level":"info","message":"SearchService.search called with query: 3969359","timestamp":"2026-04-14T04:27:08.777Z"}
+{"level":"info","message":"Starting MyPin scrape for query: 3969359","timestamp":"2026-04-14T04:27:09.149Z"}
+{"level":"info","message":"Alliance: Accessing search url -> https://direct.alliance-healthcare.co.uk/uni2/members/orders/productsearch2.asp?search=3969359","timestamp":"2026-04-14T04:27:09.765Z"}
+{"level":"info","message":"Trident: Starting headless scrape for query: 3969359","timestamp":"2026-04-14T04:27:09.791Z"}
+{"level":"info","message":"Trident: Checking authentication via navigation to: https://www.tridentonline.co.uk/trident/searchresults?operation=quickSearch&searchText=3969359&effectiveAccount=0012400000BrsTJAAZ","timestamp":"2026-04-14T04:27:09.793Z"}
+{"level":"info","message":"AAH: Starting scrape for query: 3969359","timestamp":"2026-04-14T04:27:09.794Z"}
+{"level":"info","message":"AAH: Checking authentication by navigating to: https://www.aah.co.uk/aahpoint/searchresults?operation=quickSearch&searchText=3969359","timestamp":"2026-04-14T04:27:09.796Z"}
+{"level":"info","message":"SigConnect (Puppeteer): Starting scrape for query: 3969359","timestamp":"2026-04-14T04:27:09.822Z"}
+{"level":"info","message":"SigConnect: Session loaded.","timestamp":"2026-04-14T04:27:09.862Z"}
+{"level":"info","message":"SigConnect: Entering 3969359 into Pipcode field.","timestamp":"2026-04-14T04:27:12.071Z"}
+{"level":"info","message":"SigConnect: Waiting for search results to appear...","timestamp":"2026-04-14T04:27:12.422Z"}
+{"level":"info","message":"Trident: Session is valid.","timestamp":"2026-04-14T04:27:13.778Z"}
+{"level":"info","message":"Trident: Headless scrape complete. Found 0 products.","timestamp":"2026-04-14T04:27:14.116Z"}
+{"level":"warn","message":"Trident: No products extracted for 3969359. Capturing diagnostic screenshot.","timestamp":"2026-04-14T04:27:14.116Z"}
+{"level":"error","message":"Trident: Failure screenshot saved to D:\\medicing extractor\\screenshots\\trident-failure-3969359-zero-results-1776140834116.png","timestamp":"2026-04-14T04:27:14.340Z"}
+{"level":"info","message":"SigConnect: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:27:15.636Z"}
+{"level":"info","message":"SigConnect: Session saved.","timestamp":"2026-04-14T04:27:15.646Z"}
+{"level":"info","message":"AAH: Session is valid.","timestamp":"2026-04-14T04:27:16.049Z"}
+{"level":"info","message":"AAH: Scrape complete. Found 1 products.","timestamp":"2026-04-14T04:27:19.954Z"}
+{"level":"info","message":"MyPin: No results found or timeout for 3969359","timestamp":"2026-04-14T04:27:25.297Z"}
