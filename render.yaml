@@ -11,30 +11,39 @@ services:
         value: production
       - key: PORT
         value: 10000
+      # MyPin / Supplier Credentials
+      - key: SUPPLIER_USERNAME
+        sync: false
+      - key: SUPPLIER_PASSWORD
+        sync: false
       # Trident Credentials
       - key: TRIDENT_USERNAME
         sync: false
       - key: TRIDENT_PASSWORD
         sync: false
+      - key: TRIDENT_URL
+        value: https://www.tridentonline.co.uk/trident/login
+      - key: TRIDENT_PRODUCTS_URL
+        value: https://www.tridentonline.co.uk/trident/AllProducts?cartId=755c65c4-384f-4f31-94ce-6d39e4597739&effectiveAccount=0012400000BrsTJAAZ&cclcl=en_GB
       # AAH Credentials
       - key: AAH_USERNAME
         sync: false
       - key: AAH_PASSWORD
         sync: false
+      # AAH_URL
+      - key: AAH_URL
+        value: https://www.aah.co.uk/s/signin
+      - key: AAH_PRODUCTS_URL
+        value: https://www.aah.co.uk/aahpoint/AllProducts
       # Alliance Credentials
       - key: ALLIANCE_USERNAME
         sync: false
       - key: ALLIANCE_PASSWORD
         sync: false
+      - key: ALLIANCE_LOGIN_URL
+        value: https://www.myahportal.co.uk/login
       # SigConnect Credentials
       - key: SIGCONNECT_USERNAME
         sync: false
       - key: SIGCONNECT_PASSWORD
         sync: false
-      # URLs (Optional override)
-      - key: TRIDENT_URL
-        value: https://www.tridentonline.co.uk/trident/login
-      - key: AAH_URL
-        value: https://www.aah.co.uk/s/signin
-      - key: ALLIANCE_LOGIN_URL
-        value: https://www.myahportal.co.uk/login
