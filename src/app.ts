@@ -18,7 +18,7 @@ app.use(cors({
 app.use(express.json());
 
 // Routes
-app.get('/health', (req, res) => {
+app.get('/health', (req: Request, res: Response) => {
   res.status(200).json({ status: 'ok', timestamp: new Date().toISOString() });
 });
 app.use('/api', searchRoutes);
@@ -27,7 +27,7 @@ app.use('/api', searchRoutes);
 app.use(express.static(path.join(__dirname, '../public')));
 
 // Fallback to index.html for SPA routing
-app.get(/^(?!\/api).*/, (req, res) => {
+app.get(/^(?!\/api).*/, (req: Request, res: Response) => {
   res.sendFile(path.join(__dirname, '../public/index.html'));
 });
 
