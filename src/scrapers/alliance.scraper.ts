@@ -19,7 +19,7 @@ export class AllianceScraper {
     if (!this.browser || !this.browser.isConnected()) {
       this.browser = await chromium.launch({
         headless: true,
-        args: ['--disable-blink-features=AutomationControlled'],
+        args: ['--disable-blink-features=AutomationControlled', '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
       });
     }
   }
@@ -74,8 +74,8 @@ export class AllianceScraper {
     // Handle splash page "Login" button if it exists
     const loginLink = await page.$('.loginlink, a[href="#login"], #Login, .login-btn');
     if (loginLink) {
-        logger.info('Alliance: Clicking splash login button...');
-        await loginLink.click();
+      logger.info('Alliance: Clicking splash login button...');
+      await loginLink.click();
     }
 
     // Clear common cookie banners
@@ -84,23 +84,23 @@ export class AllianceScraper {
     // Fill credentials
     const userField = await page.waitForSelector('#username', { state: 'visible', timeout: 10000 });
     if (userField) {
-        await page.fill('#username', this.credentials.username);
-        await page.fill('#password', this.credentials.password);
-        await Promise.all([
-          page.waitForURL(url => !url.href.includes('login'), { timeout: 20000 }).catch(() => {}),
-          page.click('button[type="submit"], #_submit, button:has-text("Login")')
-        ]);
+      await page.fill('#username', this.credentials.username);
+      await page.fill('#password', this.credentials.password);
+      await Promise.all([
+        page.waitForURL(url => !url.href.includes('login'), { timeout: 20000 }).catch(() => { }),
+        page.click('button[type="submit"], #_submit, button:has-text("Login")')
+      ]);
     }
 
     // Establishing session on direct portal (Crucial step)
     logger.info('Alliance: Establishing session on direct portal via handoff URL...');
     await page.goto(this.handoffUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    
+
     // Wait for a key indicator that we are in the portal
     await page.waitForSelector('input#search, .resultsTable, #main-content', { timeout: 20000 }).catch(() => {
       logger.warn('Alliance: Handoff indicator not found, but proceeding...');
     });
-    
+
     logger.info('Alliance: Authenticated and session established.');
   }
 
@@ -116,21 +116,21 @@ export class AllianceScraper {
     }
 
     // Wait for the results table or the "no results" message
-    await page.waitForSelector('.resultsTable, :text("no results"), :text("0 matching")', { timeout: 15000 }).catch(() => {});
+    await page.waitForSelector('.resultsTable, :text("no results"), :text("0 matching")', { timeout: 15000 }).catch(() => { });
 
     return page.evaluate(() => {
       const results: ProductData[] = [];
       const rows = Array.from(document.querySelectorAll('.resultsTable tbody tr'));
-      
+
       if (rows.length === 0) {
-          // Fallback to broader row detection if class is missing
-          const allRows = Array.from(document.querySelectorAll('tr'));
-          for (const row of allRows) {
-              const text = (row.textContent || '').toLowerCase();
-              if (text.includes('pip:') || text.includes('ean:')) {
-                  rows.push(row);
-              }
+        // Fallback to broader row detection if class is missing
+        const allRows = Array.from(document.querySelectorAll('tr'));
+        for (const row of allRows) {
+          const text = (row.textContent || '').toLowerCase();
+          if (text.includes('pip:') || text.includes('ean:')) {
+            rows.push(row);
           }
+        }
       }
 
       for (const row of rows) {
@@ -138,7 +138,7 @@ export class AllianceScraper {
         if (cells.length < 5) continue;
 
         const rawText = (row as HTMLElement).innerText || row.textContent || '';
-        
+
         // Product Title from 1st cell (usually contains <b><a ...>)
         const firstCell = cells[0];
         const titleEl = firstCell.querySelector('b, a');
@@ -169,14 +169,14 @@ export class AllianceScraper {
         const productUrl = productUrlEl ? productUrlEl.href : window.location.href;
 
         if (pip) {
-            results.push({
-              source: 'alliance',
-              title: title || 'Unknown',
-              price,
-              inStock,
-              url: productUrl,
-              pip
-            });
+          results.push({
+            source: 'alliance',
+            title: title || 'Unknown',
+            price,
+            inStock,
+            url: productUrl,
+            pip
+          });
         }
       }
 

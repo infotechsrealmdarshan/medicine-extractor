@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/server.js",
     "dev": "nodemon src/server.ts",
-    "build": "tsc && npx playwright install --with-deps chromium",
+    "build": "tsc && npx playwright install chromium",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write ."
   },

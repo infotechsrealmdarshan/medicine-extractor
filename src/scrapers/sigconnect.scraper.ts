@@ -9,8 +9,9 @@ import logger from '../utils/logger';
 // Add stealth plugin
 puppeteer.use(StealthPlugin());
 
+const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
 const DEFAULT_SIGCONNECT_LOGIN_URL = 'https://www.sigconnect.co.uk/login';
-const DEFAULT_SIGCONNECT_SEARCH_URL = 'https://www.sigconnect.co.uk/#/search/';
+const DEFAULT_SIGCONNECT_SEARCH_BASE_URL = 'https://www.sigconnect.co.uk/#/search/';
 
 export class SigConnectScraper {
   private browser: Browser | null = null;
@@ -22,16 +23,22 @@ export class SigConnectScraper {
 
   private async launchBrowser() {
     if (!this.browser || !this.browser.isConnected()) {
+      logger.debug('SigConnect: Launching Puppeteer browser...');
       this.browser = await puppeteer.launch({
         headless: true,
+        protocolTimeout: 120000,
         args: [
           '--no-sandbox',
           '--disable-setuid-sandbox',
+          '--disable-dev-shm-usage',
           '--disable-blink-features=AutomationControlled',
+          '--disable-gpu',
+          '--single-process',
           '--window-size=1920,1080'
         ],
         defaultViewport: null
       });
+      logger.debug('SigConnect: Browser launched successfully.');
     }
   }
 
@@ -50,15 +57,20 @@ export class SigConnectScraper {
     });
 
     if (isChallenge) {
-      logger.info('SigConnect (Puppeteer): Cloudflare challenge detected. Waiting...');
-      await page.waitForFunction(() => {
-        const body = document.body.innerText.toLowerCase();
-        return !body.includes('performing security verification') &&
-          !body.includes('verify you are human') &&
-          (document.querySelector('#loginform-username') !== null || document.location.href.includes('search'));
-      }, { timeout: 60000 }).catch(() => {
-        logger.warn('SigConnect: Cloudflare challenge wait timed out.');
-      });
+      logger.info('SigConnect: Cloudflare challenge detected. PLEASE SOLVE MANUALLY if needed. Waiting up to 2 minutes...');
+      // Loop to check if challenge is cleared every 2 seconds
+      for (let i = 0; i < 60; i++) {
+        await delay(2000);
+        const stillChallenge = await page.evaluate(() => {
+          const body = document.body.innerText.toLowerCase();
+          return body.includes('performing security verification') ||
+            body.includes('verify you are human');
+        });
+        if (!stillChallenge) {
+          logger.info('SigConnect: Challenge cleared.');
+          return;
+        }
+      }
     }
   }
 
@@ -111,215 +123,250 @@ export class SigConnectScraper {
   }
 
   async scrape(query: string): Promise<ProductData[]> {
+    const scrapeStart = Date.now();
     await this.launchBrowser();
     const page = await this.browser!.newPage();
 
+    page.on('error', (err) => logger.error(`SigConnect: Page crash/error: ${err instanceof Error ? err.message : String(err)}`));
+    page.on('pageerror', (err) => logger.warn(`SigConnect: Page JS error: ${err instanceof Error ? err.message : String(err)}`));
+
     try {
-      logger.info(`SigConnect (Puppeteer): Starting scrape for query: ${query}`);
+      logger.info(`SigConnect: Starting scrape for query: ${query}`);
       await this.loadSession(page);
 
-      await page.goto(DEFAULT_SIGCONNECT_SEARCH_URL, { waitUntil: 'networkidle2', timeout: 30000 });
+      const searchUrl = `${DEFAULT_SIGCONNECT_SEARCH_BASE_URL}?dt=${Date.now()}`;
+      await page.goto(searchUrl, { waitUntil: 'networkidle2', timeout: 45000 });
       await this.handleCloudflare(page);
 
       if (await this.isLoginPage(page)) {
+        logger.info('SigConnect: Login required, authenticating...');
         await this.login(page);
-        if (page.url() !== DEFAULT_SIGCONNECT_SEARCH_URL) {
-          await page.goto(DEFAULT_SIGCONNECT_SEARCH_URL, { waitUntil: 'networkidle2', timeout: 30000 });
-        }
       }
 
       await this.performSearchAction(page, query);
       const products = await this.extractProducts(page, query);
 
-      logger.info(`SigConnect: Scrape complete. Found ${products.length} products.`);
-      if (products.length === 0) await this.saveFailureScreenshot(page, query);
-      else await this.saveSession(page);
+      const elapsed = Date.now() - scrapeStart;
+      logger.info(`SigConnect: Scrape complete in ${elapsed}ms. Found ${products.length} products.`);
+      if (products.length === 0) {
+        logger.warn(`SigConnect: Zero products found for "${query}". Saving failure screenshot.`);
+        await this.saveFailureScreenshot(page, query);
+      } else {
+        await this.saveSession(page);
+      }
 
       return products;
     } catch (error) {
-      logger.error(`SigConnect (Puppeteer) scrape failed: ${error}`);
-      await this.saveFailureScreenshot(page, query);
+      const elapsed = Date.now() - scrapeStart;
+      logger.error(`SigConnect scrape failed: ${error}`);
+      try { await this.saveFailureScreenshot(page, query); } catch (_) { }
+      if (this.browser) {
+        try { await this.browser.close(); } catch (_) { }
+        this.browser = null;
+      }
       return [];
     } finally {
-      await page.close();
+      try { await page.close(); } catch (_) { }
     }
   }
 
   private async performSearchAction(page: Page, query: string) {
-    const isPipCode = /^\d{7,8}$/.test(query);
-    logger.info(`SigConnect: Entering ${query} into ${isPipCode ? 'Pipcode' : 'Keyword'} field.`);
+    let filled = false;
+    logger.info(`SigConnect: Triggering search for ${query} via DOM events.`);
 
-    // Use hardcoded indices for the input fields as the layout is very consistent
-    // Index 0: Keyword, Index 1: Pipcode, Index 2: Product code
-    const targetIndex = isPipCode ? 1 : 0;
-
-    const found = await page.evaluate((index) => {
-      const inputs = Array.from(document.querySelectorAll('input[type="text"], input:not([type])'));
-      // Filter to only include the main search row inputs (they have placeholders like "Type..." or "110...")
-      const searchInputs = inputs.filter(inp => {
-        const ph = inp.getAttribute('placeholder') || '';
-        return ph.includes('Type') || ph.includes('110') || ph.includes('Sig') || inp.id.includes('keyword') || inp.id.includes('pip');
-      });
-
-      const target = searchInputs[index];
-      if (target) {
-        (target as HTMLInputElement).focus();
-        (target as HTMLInputElement).value = '';
-        return true;
+    await page.evaluate((originalQ) => {
+      // Remove leading zero if it's all numbers (as requested)
+      let q = originalQ;
+      if (/^0\d+$/.test(q)) {
+        q = q.replace(/^0+/, '');
       }
-      return false;
-    }, targetIndex);
 
-    if (found) {
-      // Puppeteer keyboard actions are more reliable for triggering Angular search events
-      await page.keyboard.down('Control');
-      await page.keyboard.press('A');
-      await page.keyboard.up('Control');
-      await page.keyboard.press('Backspace');
-      // Capture initial state BEFORE search to detect change accurately
-      const initialState = await page.evaluate(() => {
-        const cat = Array.from(document.querySelectorAll('div, section')).find(el => el.textContent?.toUpperCase().includes('SIGMA CATALOGUE')) as HTMLElement;
-        return cat ? cat.innerText : '';
-      });
+      const inputs = Array.from(document.querySelectorAll('input[type="text"], input:not([type])')) as HTMLInputElement[];
+      if (inputs.length > 0) {
+        const isOnlyNumbers = /^\d+$/.test(q);
 
-      await page.keyboard.type(query, { delay: 40 });
+        let target: HTMLInputElement | undefined;
+        if (isOnlyNumbers) {
+          // HIGHLY SPECIFIC: Look for 110 placeholder which is unique to Pipcode
+          target = inputs.find(i => (i.placeholder || '').includes('110'));
+
+          if (!target) {
+            target = inputs.find(i => {
+              const label = document.querySelector(`label[for="${i.id}"]`) as HTMLElement;
+              return (label?.innerText || '').toLowerCase().includes('pipcode');
+            });
+          }
+
+          if (!target && inputs.length >= 2) target = inputs[1]; // Positional index 1
+        } else {
+          // HIGHLY SPECIFIC: Look for Keyword or index 0
+          target = inputs.find(i => {
+            const label = document.querySelector(`label[for="${i.id}"]`) as HTMLElement;
+            const text = (label?.innerText || '').toLowerCase();
+            return text.includes('keyword') || (i.placeholder || '').toLowerCase().includes('search');
+          });
+          if (!target) target = inputs[0];
+        }
+
+        if (target) {
+          target.focus();
+          target.value = '';
+          target.value = q;
+          ['input', 'change', 'propertychange', 'blur'].forEach(name => {
+            target.dispatchEvent(new Event(name, { bubbles: true }));
+          });
+        }
+      }
+    }, query);
+
+    // Press Enter specifically on the field we typed in
+    try {
       await page.keyboard.press('Enter');
-
-      // Wait for the UI to update
-      await this.waitForResults(page, initialState);
-    } else {
-      // Final desperate fallback
-      const selector = isPipCode ? 'input[placeholder*="110"]' : 'input[placeholder*="Type"]';
-      const input = await page.$(selector);
-      if (input) {
-        await input.click({ clickCount: 3 });
-        await input.type(query, { delay: 40 });
-        await input.press('Enter');
-      }
+      logger.debug('SigConnect: Pressed Enter keyboard key.');
+    } catch (e) {
+      logger.warn('SigConnect: Failed to press Enter key.');
     }
+
+    await this.waitForResults(page, query);
   }
 
-  private async waitForResults(page: Page, initialState: string = '') {
+  private async waitForResults(page: Page, query: string) {
     logger.info('SigConnect: Waiting for search results to appear...');
+    const waitStart = Date.now();
     try {
-      await page.waitForFunction((oldText: string) => {
+      const initialContent = await page.evaluate(() => {
+        const cat = Array.from(document.querySelectorAll('div, section')).find(el => el.textContent?.toUpperCase().includes('SIGMA CATALOGUE'));
+        return cat ? cat.textContent : '';
+      });
+
+      await page.waitForFunction((q, startContent) => {
         const bodyText = document.body.innerText.toLowerCase();
+        const cat = Array.from(document.querySelectorAll('div, section')).find(el => el.textContent?.toUpperCase().includes('SIGMA CATALOGUE'));
+        const currentContent = cat ? cat.textContent : '';
 
-        // Look for the catalogue container
-        const catalogue = Array.from(document.querySelectorAll('div, section, table')).find(el =>
-          el.textContent?.toUpperCase().includes('SIGMA CATALOGUE')
-        );
+        const hasChanged = currentContent !== startContent && currentContent?.length! > 20;
 
-        if (!catalogue) return false;
-
-        // Check for "no results"
-        const noResults = bodyText.includes('no products found') ||
-          bodyText.includes('no results matching') ||
-          bodyText.includes('0 results found') ||
-          bodyText.includes('no records matching');
-        if (noResults) return true;
-
-        // Check if content has changed from initial state and looks like product data
-        const currentText = (catalogue as HTMLElement).innerText || '';
-        const hasChanged = oldText && currentText.length > 20 && currentText !== oldText;
-
-        // Check for presence of product-like elements (rows with data)
-        const hasProducts = Array.from(catalogue.querySelectorAll('tr, .sigma-catalogue-item, [ng-repeat*="product"], div.row')).some((el: Element) => {
-          const t = el.textContent?.toLowerCase() || '';
-          return t.length > 30 && !t.includes('keyword') && !t.includes('search');
-        });
-
-        return hasChanged || hasProducts;
-      }, { timeout: 12000 }, initialState);
+        return bodyText.includes('no products found') ||
+          bodyText.includes('0 results') ||
+          bodyText.includes('0 items matched') ||
+          hasChanged ||
+          (bodyText.includes(q.toLowerCase()) && currentContent?.includes(q));
+      }, { timeout: 15000 }, query, initialContent);
+      logger.debug(`SigConnect: waitForResults resolved in ${Date.now() - waitStart}ms`);
     } catch (e) {
-      logger.warn('SigConnect: waitForResults timed out or failed. Proceeding to extraction.');
+      logger.warn('SigConnect: waitForResults timed out. Proceeding to extraction.');
     }
 
-    // Longer buffer for Angular/SPA updates to finish settling
-    await page.evaluate(() => new Promise(r => setTimeout(r, 2500)));
+    logger.debug('SigConnect: Waiting 2 s for SPA to fully settle...');
+    await delay(2000);
   }
 
   private async extractProducts(page: Page, query: string): Promise<ProductData[]> {
-    return page.evaluate((query: string) => {
+    logger.debug(`SigConnect: Extracting results...`);
+    const results = await page.evaluate((searchQuery: string) => {
+      console.log('SigConnect: Starting evaluation...');
       const found: any[] = [];
       const source = 'sigconnect';
 
-      // 1. Identify the search results area
-      const containers = Array.from(document.querySelectorAll('div, section, .panel, .widget, table')).filter(el =>
-        el.textContent?.toUpperCase().includes('SIGMA CATALOGUE')
-      );
+      // Find all quantity inputs - these are the most reliable anchors for product rows
+      const allInputs = Array.from(document.querySelectorAll('input[type="text"], input[type="number"], input:not([type])')) as HTMLInputElement[];
+      console.log(`SigConnect: Found ${allInputs.length} total inputs.`);
 
-      const resultsArea = containers[containers.length - 1] || document.body;
+      const productInputs = allInputs.filter(input => {
+        const placeholder = (input.placeholder || '').toLowerCase();
+        const id = (input.id || '').toLowerCase();
+        const outerText = (input.parentElement?.parentElement?.innerText || '').toLowerCase();
 
-      // 2. Comprehensive row detection
-      // We look for elements that look like a product row (name + price or icon or pip)
-      const allElements = Array.from(resultsArea.querySelectorAll('tr, .sigma-catalogue-item, [ng-repeat*="product"], .product-row, .item-row, div.row'));
+        const isSearch = placeholder.includes('search') || placeholder.includes('keyword') ||
+          placeholder.includes('pip') || id.includes('pip') ||
+          id.includes('keyword') || id.includes('search') ||
+          outerText.includes('keyword') || outerText.includes('pipcode');
 
-      const rows = allElements.filter((el: Element) => {
-        const text = (el as HTMLElement).innerText || el.textContent || '';
-        const lowerText = text.toLowerCase();
+        const isSidebar = input.closest('aside, nav, .sidebar, .menu, [id*="sidebar"], [class*="nav"]');
 
-        // Skip if too short or clearly a header/field
-        if (text.length < 20) return false;
-        if (lowerText.includes('keyword') || lowerText.includes('pipcode')) return false;
-        if (lowerText.includes('product') && lowerText.includes('pack') && lowerText.includes('inv.')) return false;
-
-        // Must have some product-like content (digits for price/pip or stock indicator)
-        return /\d/.test(text) || el.querySelector('button, input, .success, .green, .red, img');
+        // Real product inputs are usually near the end of the DOM or in the catalyst-table
+        // and have a physical width that isn't the whole page
+        return !isSearch && !isSidebar && input.offsetParent !== null && input.offsetWidth < 100;
       });
 
-      const seenTitles = new Set();
+      console.log(`SigConnect: Identified ${productInputs.length} product-related inputs.`);
 
-      for (const el of rows) {
-        const text = (el as HTMLElement).innerText || el.textContent || '';
+      for (const input of productInputs) {
+        // Find the smallest container that looks like a row
+        let row: HTMLElement | null = input.parentElement;
+        let depth = 0;
+        while (row && depth < 5) {
+          if (row.tagName === 'TR' || (row.tagName === 'DIV' && row.innerText.length > 30)) break;
+          row = row.parentElement;
+          depth++;
+        }
+
+        if (!row) continue;
+        const text = row.innerText || row.textContent || '';
         const lowerText = text.toLowerCase();
 
-        // Extract Title - be very aggressive finding the name
-        // Usually the first bold element or the first line of text
-        const titleEl = el.querySelector('b, a, .product-name, [class*="title"], strong, h4, h3, .name');
-        let title = '';
+        // Title Extraction - the title might be in a sibling or parent if the row is split
+        let titleEl = row.querySelector('b, a, strong, .name, [class*="product"], [class*="title"]');
+        let title = (titleEl?.textContent || '').trim();
 
-        if (titleEl) {
-          title = titleEl.textContent?.trim() || '';
+        // If no title in row, check the element immediately above the row (common in some Sigma layouts)
+        if (!title || title.length < 5) {
+          const prevText = (row.previousElementSibling as HTMLElement)?.innerText || '';
+          if (prevText.length > 10 && !prevText.includes('PRODUCT')) title = prevText;
         }
 
-        if (!title || title.length < 5) {
-          // Fallback: take the first long line
-          const lines = text.split('\n').map(l => l.trim()).filter(l => l.length > 5);
+        if (!title || title.toLowerCase().includes('sigma catalogue') || title.length < 5 || title.toLowerCase() === 'keyword' || title.toLowerCase() === 'pipcode') {
+          const lines = text.split('\n').concat(row.parentElement?.innerText.split('\n') || []).map(l => l.trim()).filter(l => l.length > 5 && !l.toLowerCase().includes('sigma catalogue') && !l.toLowerCase().includes('keyword') && !l.includes('£'));
           title = lines[0] || '';
         }
-
-        // Clean title
         title = title.replace(/^[•●○\s*]+/, '').trim();
-        // Remove trailing "In Stock" or similar if concatenated
-        title = title.replace(/\s+(In Stock|Out of Stock|More info|Add).*$/i, '').trim();
+        if (title.length < 5 || title.toLowerCase().includes('my favourites') || title.toLowerCase().includes('keyword')) continue;
 
-        if (!title || title.length < 5 || seenTitles.has(title)) continue;
+        const isPipMode = /^\d{7,8}$/.test(searchQuery);
+        const isPipMatch = text.replace(/[^a-zA-Z0-9]/g, '').includes(searchQuery.replace(/[^a-zA-Z0-9]/g, ''));
+        const isTitleMatch = title.toLowerCase().includes(searchQuery.toLowerCase());
 
-        // Extract Price
-        let price = 0;
-        // Look for £ symbol or pure digit patterns like 10.50
-        const priceMatch = text.match(/£\s*([\d,]+\.\d{2})/) ||
-          text.match(/(\d+[,.]\d{2})\b/) ||
-          text.match(/price:?\s*£?\s*([\d.]+)/i);
-        if (priceMatch) {
-          price = parseFloat(priceMatch[1].replace(/,/g, ''));
+        // Match filtering
+        if (isPipMode && productInputs.length > 10 && !isPipMatch && !isTitleMatch) continue;
+        if (found.some(f => f.title === title)) continue;
+
+        // Price Extraction
+        const priceEl = row.querySelector('.price, [class*="price"], .net, .amount, .total, .unit-price, td:nth-child(4), td:nth-child(5), td:nth-child(6)');
+        let priceText = (priceEl?.textContent || '').trim();
+
+        if (!priceText || !/\d/.test(priceText)) {
+          // Look for specifically formatted prices like £6.27 or Net: 6.27
+          const priceMatches = text.match(/£\s*(\d+\.\d{2})|Price:\s*(\d+\.\d{2})|Net:\s*(\d+\.\d{2})/i);
+          if (priceMatches) {
+            priceText = priceMatches[0];
+          } else {
+            // Broad scan for any decimal number that follows a cell containing '£' or '.'
+            const cells = Array.from(row.querySelectorAll('td, div[class*="col"]'));
+            for (const cell of cells) {
+              const ct = (cell.textContent || '').trim();
+              if (/^£?\s*\d+\.\d{2}$/.test(ct)) {
+                priceText = ct;
+                break;
+              }
+            }
+          }
         }
 
-        // Extract Stock
-        const html = el.innerHTML.toLowerCase();
-        const inStock = html.includes('green') ||
-          html.includes('success') ||
-          html.includes('check') ||
-          html.includes('dot') ||
-          lowerText.includes('in stock') ||
-          lowerText.includes('available') ||
-          lowerText.includes('inv:') ||
-          (!html.includes('red') && !lowerText.includes('out of stock') && !lowerText.includes('0 inv'));
+        let price = parseFloat(priceText.replace(/[^0-9.]/g, '') || '0') || 0;
 
-        // Extract PIP
+        // Global fallback if row-level fails but item is definitely found
+        if (price === 0) {
+          const globalMatch = document.body.innerText.match(/£\s*(\d+\.\d{2})/);
+          if (globalMatch) price = parseFloat(globalMatch[1]);
+        }
+
         const pipMatch = text.match(/PIP:\s*(\d{7,8})/i) || text.match(/\b(\d{7,8})\b/);
-        const pip = pipMatch ? pipMatch[1] : (query.match(/^\d{7,8}$/) ? query : '');
+        let pipValue = pipMatch ? pipMatch[1] : (isPipMode ? searchQuery : '');
+
+        const inStock = lowerText.includes('in stock') ||
+          lowerText.includes('available') ||
+          lowerText.includes('add to basket') ||
+          row.querySelector('input') !== null;
 
         found.push({
           source,
@@ -327,33 +374,12 @@ export class SigConnectScraper {
           price,
           inStock,
           url: (titleEl as any)?.href || window.location.href,
-          pip
+          pip: pipValue
         });
-        seenTitles.add(title);
       }
-
-      // Final fallback if extraction was too strict but we see something
-      const resultsAreaHtml = resultsArea as HTMLElement;
-      if (found.length === 0 && resultsAreaHtml.innerText && resultsAreaHtml.innerText.length > 100) {
-        const lines = resultsAreaHtml.innerText.split('\n').filter((l: string) => l.trim().length > 10);
-        // If we found a line that looks like a product name and we had no results
-        for (const line of lines) {
-          if (line.toLowerCase().includes(query) || (query.length > 5 && line.length > 15 && !line.includes('Search'))) {
-            found.push({
-              source,
-              title: line.trim(),
-              price: 0,
-              inStock: true,
-              url: window.location.href,
-              pip: query.match(/^\d{7,8}$/) ? query : ''
-            });
-            break;
-          }
-        }
-      }
-
       return found;
     }, query);
+    return results;
   }
 
   private async saveFailureScreenshot(page: Page, query: string) {

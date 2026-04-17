@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: medicing-extractor-api
+    env: node
+    plan: free
+    buildCommand: "npm install && npm run build"
+    startCommand: "npm run start"
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      # Trident Credentials
+      - key: TRIDENT_USERNAME
+        sync: false
+      - key: TRIDENT_PASSWORD
+        sync: false
+      # AAH Credentials
+      - key: AAH_USERNAME
+        sync: false
+      - key: AAH_PASSWORD
+        sync: false
+      # Alliance Credentials
+      - key: ALLIANCE_USERNAME
+        sync: false
+      - key: ALLIANCE_PASSWORD
+        sync: false
+      # SigConnect Credentials
+      - key: SIGCONNECT_USERNAME
+        sync: false
+      - key: SIGCONNECT_PASSWORD
+        sync: false
+      # URLs (Optional override)
+      - key: TRIDENT_URL
+        value: https://www.tridentonline.co.uk/trident/login
+      - key: AAH_URL
+        value: https://www.aah.co.uk/s/signin
+      - key: ALLIANCE_LOGIN_URL
+        value: https://www.myahportal.co.uk/login

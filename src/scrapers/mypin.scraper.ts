@@ -15,6 +15,8 @@ export interface ProductData {
   inStock: boolean;
   url?: string;
   pip?: string;
+  /** Set when this row came from a multi-query batch */
+  matchedQuery?: string;
 }
 
 const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
@@ -27,7 +29,7 @@ export class MyPinScraper {
     if (!this.browser || !this.browser.isConnected()) {
       this.browser = await chromium.launch({
         headless: true,
-        args: ['--disable-blink-features=AutomationControlled'],
+        args: ['--disable-blink-features=AutomationControlled', '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox'],
       });
     }
     const dir = path.dirname(this.storageStatePath);
@@ -65,115 +67,124 @@ export class MyPinScraper {
     try {
       logger.info(`Starting MyPin scrape for query: ${query}`);
 
-      const searchUrl = 'https://www.myp-i-n.co.uk/pms/servlet/eboserver?svcname=e10h009&usrurl=../design';
+      let products = await this.performSearch(page, query);
 
-      // Step 1: Try direct navigation to search (Optimistic)
-      await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-
-      // Detect if we are redirected to login
-      if (await page.locator('input[name="cuf_id"]').count() > 0) {
-        logger.info('MyPin: Session expired, logging in...');
+      if (products === null) {
+        logger.info('MyPin: Session expired or not logged in, authenticating...');
         await this.login(page);
         await context.storageState({ path: this.storageStatePath });
 
-        // Return to search
-        await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+        products = await this.performSearch(page, query);
       }
 
-      // Step 2: Perform search
-      const isPipCode = /^\d{7,8}$/.test(query);
-      if (isPipCode) {
-        await page.waitForSelector('input[name="art_search"]', { timeout: 10000 });
-        await page.fill('input[name="art_search"]', query);
-        await page.keyboard.press('Enter');
-      } else {
-        await page.waitForSelector('input[name="search_words"]', { timeout: 10000 });
-        await page.fill('input[name="search_words"]', query);
-        await page.keyboard.press('Enter');
-      }
-
-      // Step 3: Extract
-      try {
-        await Promise.race([
-          page.waitForSelector('table', { timeout: 15000 }),
-          page.waitForSelector('text=Not Known', { timeout: 15000 }),
-          page.waitForSelector('text=No matching products', { timeout: 15000 }),
-        ]);
-      } catch (e) {
-        logger.info(`MyPin: No results found or timeout for ${query}`);
-        return [];
-      }
-
-      const isNotFound = await page.evaluate(() => {
-        const text = document.body.innerText;
-        return text.includes('Is Not Known') || text.includes('No matching products found');
-      });
-
-      if (isNotFound) return [];
-
-      const products = await page.evaluate(() => {
-        const rows = Array.from(document.querySelectorAll('table tr'));
-        if (rows.length === 0) return [];
-
-        const isDetailView = rows.some(row => {
-          const firstCellText = row.querySelector('td')?.innerText.trim() || '';
-          return firstCellText === 'PIP Code' || firstCellText === 'Description';
-        });
-
-        if (isDetailView) {
-          const data: Record<string, string> = {};
-          rows.forEach(row => {
-            const cells = row.querySelectorAll('td');
-            if (cells.length >= 2) {
-              data[cells[0].innerText.trim()] = cells[1].innerText.trim();
-            }
-          });
-
-          if (data['Description'] || data['PIP Code']) {
-            const title = data['Description'] || 'Unknown Product';
-            const priceStr = data['Numark Price'] || data['Standard Sell Price'] || '0.00';
-            const price = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
-            const stockStr = data['Availability'] || '';
-            const inStock = stockStr.toLowerCase().includes('in stock') ||
-              (stockStr.toLowerCase().includes('available') && !stockStr.toLowerCase().includes('not available'));
-            return [{
-              source: 'myp-i-n',
-              title,
-              price,
-              inStock,
-              url: window.location.href,
-              pip: data['PIP Code'] || '',
-            } as ProductData];
-          }
-        }
-
-        return rows.slice(1).map((row) => {
-          const cells = row.querySelectorAll('td');
-          if (cells.length < 8) return null;
-          const title = cells[1]?.innerText.trim() || 'Unknown';
-          const priceStr = cells[4]?.innerText.trim() || cells[3]?.innerText.trim() || cells[2]?.innerText.trim() || '0.00';
-          const price = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
-          const stockStr = cells[7]?.innerText.trim() || '';
-          const inStock = stockStr.toLowerCase().includes('in stock') ||
-            (stockStr.toLowerCase().includes('available') && !stockStr.toLowerCase().includes('not available'));
-          return {
-            source: 'myp-i-n',
-            title,
-            price,
-            inStock,
-            url: window.location.href,
-            pip: cells[0]?.innerText.trim() || '',
-          } as ProductData;
-        }).filter((p): p is ProductData => p !== null);
-      });
-
-      return products;
+      return products || [];
     } catch (error) {
       logger.error(`MyPin: Scraping failed: ${error}`);
       return [];
     } finally {
       await context.close();
     }
+  }
+
+  private async performSearch(page: Page, query: string): Promise<ProductData[] | null> {
+    const searchUrl = 'https://www.myp-i-n.co.uk/pms/servlet/eboserver?svcname=e10h009&usrurl=../design';
+    await page.goto(searchUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
+
+    const isPipCode = /^\d{7,8}$/.test(query);
+    if (isPipCode) {
+      await page.waitForSelector('input[name="art_search"]', { timeout: 10000 });
+      await page.fill('input[name="art_search"]', query);
+      await page.keyboard.press('Enter');
+    } else {
+      await page.waitForSelector('input[name="search_words"]', { timeout: 10000 });
+      await page.fill('input[name="search_words"]', query);
+      await page.keyboard.press('Enter');
+    }
+
+    try {
+      await Promise.race([
+        page.waitForSelector('table', { timeout: 15000 }),
+        page.waitForSelector('text=Not Known', { timeout: 15000 }),
+        page.waitForSelector('text=No matching products', { timeout: 15000 }),
+        page.waitForSelector('text=Customer Not Logged In', { timeout: 15000 }),
+      ]);
+    } catch (e) {
+      logger.info(`MyPin: No results found or timeout for ${query}`);
+      return [];
+    }
+
+    const isNotFound = await page.evaluate(() => {
+      const text = document.body.innerText;
+      return text.includes('Is Not Known') || text.includes('No matching products found');
+    });
+
+    if (isNotFound) return [];
+
+    const isNotLoggedIn = await page.evaluate(() => {
+      return document.body.innerText.includes('Customer Not Logged In');
+    });
+
+    if (isNotLoggedIn) {
+      return null; // Signals scrape() to trigger login and retry
+    }
+
+    const products = await page.evaluate(() => {
+      const rows = Array.from(document.querySelectorAll('table tr'));
+      if (rows.length === 0) return [];
+
+      const isDetailView = rows.some(row => {
+        const firstCellText = row.querySelector('td')?.innerText.trim() || '';
+        return firstCellText === 'PIP Code' || firstCellText === 'Description';
+      });
+
+      if (isDetailView) {
+        const data: Record<string, string> = {};
+        rows.forEach(row => {
+          const cells = row.querySelectorAll('td');
+          if (cells.length >= 2) {
+            data[cells[0].innerText.trim()] = cells[1].innerText.trim();
+          }
+        });
+
+        if (data['Description'] || data['PIP Code']) {
+          const title = data['Description'] || 'Unknown Product';
+          const priceStr = data['Numark Price'] || data['Standard Sell Price'] || '0.00';
+          const price = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
+          const stockStr = data['Availability'] || '';
+          const inStock = stockStr.toLowerCase().includes('in stock') ||
+            (stockStr.toLowerCase().includes('available') && !stockStr.toLowerCase().includes('not available'));
+          return [{
+            source: 'myp-i-n',
+            title,
+            price,
+            inStock,
+            url: window.location.href,
+            pip: data['PIP Code'] || '',
+          } as ProductData];
+        }
+      }
+
+      return rows.slice(1).map((row) => {
+        const cells = row.querySelectorAll('td');
+        if (cells.length < 8) return null;
+        const title = cells[1]?.innerText.trim() || 'Unknown';
+        const priceStr = cells[4]?.innerText.trim() || cells[3]?.innerText.trim() || cells[2]?.innerText.trim() || '0.00';
+        const price = parseFloat(priceStr.replace(/[^0-9.]/g, '')) || 0;
+        const stockStr = cells[7]?.innerText.trim() || '';
+        const inStock = stockStr.toLowerCase().includes('in stock') ||
+          (stockStr.toLowerCase().includes('available') && !stockStr.toLowerCase().includes('not available'));
+        return {
+          source: 'myp-i-n',
+          title,
+          price,
+          inStock,
+          url: window.location.href,
+          pip: cells[0]?.innerText.trim() || '',
+        } as ProductData;
+      }).filter((p): p is ProductData => p !== null);
+    });
+
+    return products;
   }
 
   private async login(page: Page) {

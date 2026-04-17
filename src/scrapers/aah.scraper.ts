@@ -24,10 +24,12 @@ export class AahScraper {
   // ─── Browser lifecycle ────────────────────────────────────────────────────
 
   private async launchBrowser() {
+    logger.debug('AAH: Launching Playwright browser...');
     this.browser = await chromium.launch({
       headless: true,
-      args: ['--disable-blink-features=AutomationControlled'],
+      args: ['--disable-blink-features=AutomationControlled', '--disable-dev-shm-usage', '--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu'],
     });
+    logger.debug('AAH: Browser launched.');
   }
 
   async init() {
@@ -299,7 +301,11 @@ export class AahScraper {
     logger.info(`AAH: Navigating to AllProducts page: ${productsUrl}`);
     // Use domcontentloaded – the AAH portal has persistent background XHR that
     // prevents networkidle from ever settling within 60 s.
-    await page.goto(productsUrl, { waitUntil: 'domcontentloaded', timeout: 60000 });
+    try {
+      await page.goto(productsUrl, { waitUntil: 'domcontentloaded', timeout: 45000 });
+    } catch (e) {
+      logger.warn(`AAH: Navigation to AllProducts timed out or failed: ${e}`);
+    }
     await delay(3000);
     await this.acceptCookies(page);
 
@@ -343,6 +349,8 @@ export class AahScraper {
   // ─── Result waiting & extraction ──────────────────────────────────────────
 
   private async waitForResults(page: Page) {
+    logger.debug('AAH: waitForResults starting...');
+    const waitStart = Date.now();
     await page
       .waitForFunction(
         () => {
@@ -357,17 +365,17 @@ export class AahScraper {
           const bodyText = document.body.innerText.toLowerCase();
 
           const items =
-            document.querySelectorAll(
+            Array.from(document.querySelectorAll(
               '.cc_product_item, .cc_row_item, .product-item, ' +
               'table.searchresults tbody tr, .search-results-table tbody tr, ' +
               'tbody tr.productRow, tbody tr[class*="product"], ' +
               '.cc_product_listing tbody tr',
-            ).length > 0;
+            )).some((el: any) => (el.innerText || '').trim().length > 10);
 
           const noResults =
             bodyText.includes('no results found') ||
             bodyText.includes('did not return any results') ||
-            bodyText.includes('0 results') ||
+            /\b0 results\b/.test(bodyText) ||
             bodyText.includes('no matching products') ||
             /showing\s+1\s*-\s*0\s+of\s+0/.test(bodyText);
 
@@ -377,29 +385,63 @@ export class AahScraper {
             "enter your details below and we'll do the rest",
           );
 
-          return items || noResults || hasResultCount || stillLogin;
+          // Additional check: wait for prices to appear if items are found
+          const hasPrice = (document.querySelector('.cc_price, .price, .plp-price-col, [class*="price"]') as HTMLElement)?.innerText?.trim().length > 0;
+
+          return (items && hasPrice) || noResults || hasResultCount || stillLogin;
         },
         undefined,
-        { timeout: 30000 },
+        { timeout: 20000 },
       )
-      .catch(() => {
-        logger.warn('AAH: waitForResults timed out – proceeding anyway.');
+      .catch((err) => {
+        logger.warn(`AAH: waitForResults timed out or failed: ${err.message}. Proceeding with extraction.`);
       });
 
+    // Also wait for the spinner to disappear if present
+    await page.waitForSelector('.slds-spinner_container', { state: 'hidden', timeout: 10000 }).catch(() => { });
+
+    logger.debug(`AAH: waitForResults done in ${Date.now() - waitStart}ms. Current URL: ${page.url()}`);
     await this.clearCookieOverlay(page).catch(() => { });
   }
 
   private async extractProducts(page: Page): Promise<ProductData[]> {
-    return page.evaluate(() => {
+    logger.debug(`AAH: extractProducts called. URL: ${page.url()}`);
+    const results = await page.evaluate(() => {
+      // Helper to pierce Shadow DOM during extraction
+      function findInShadow(root: Document | HTMLElement | ShadowRoot, selector: string): HTMLElement | null {
+        const el = root.querySelector(selector) as HTMLElement | null;
+        if (el) return el;
+        const children = Array.from(root.children);
+        for (const child of children) {
+          if (child.shadowRoot) {
+            const found = findInShadow(child.shadowRoot, selector);
+            if (found) return found;
+          }
+          const found = findInShadow(child as HTMLElement, selector);
+          if (found) return found;
+        }
+        return null;
+      }
+
+      function findAllInShadow(root: Document | HTMLElement | ShadowRoot, selector: string, results: Element[] = []) {
+        root.querySelectorAll(selector).forEach(el => results.push(el));
+        const children = Array.from(root.children);
+        for (const child of children) {
+          if (child.shadowRoot) findAllInShadow(child.shadowRoot, selector, results);
+          findAllInShadow(child as HTMLElement, selector, results);
+        }
+        return results;
+      }
+
       // 1. Try to find a list/table of results
       const LIST_SELECTORS = [
+        'tbody tr.productRow',
+        'tbody tr[class*="product"]',
         '.cc_product_item',
         '.cc_row_item',
         '.product-item',
         'table.searchresults tbody tr',
         '.search-results-table tbody tr',
-        'tbody tr.productRow',
-        'tbody tr[class*="product"]',
         '.cc_product_listing tbody tr',
         'tbody tr:has(td a)',
       ];
@@ -412,37 +454,40 @@ export class AahScraper {
             items = found;
             break;
           }
-        } catch {
-          // ignore :has compatibility
-        }
+        } catch { }
+      }
+
+      // Fallback: search in shadow DOM
+      if (items.length === 0) {
+        items = findAllInShadow(document, '.cc_product_item, .cc_row_item, [class*="product-row"]');
       }
 
       if (items.length > 0) {
         const products = items
           .map((item) => {
-            const titleEl = item.querySelector(
+            const titleEl = (item.querySelector(
               '.flexFontProductTitle, .cc_product_link, p.cc_product_link, ' +
-              '.product-link, [class*="productTitle"], td a, td:first-child, .cc_product_name',
-            ) as HTMLElement | null;
+              '.product-link, [class*="productTitle"], td a, td:first-child, .cc_product_name'
+            ) || findInShadow(item as HTMLElement, '.cc_product_name, .product-title')) as HTMLElement | null;
 
-            const priceEl = item.querySelector(
+            const priceEl = (item.querySelector(
               '.cc_price, .price, .plp-price-col, [class*="price"], ' +
-              'td[class*="price"], td:nth-child(3)',
-            ) as HTMLElement | null;
+              'td[class*="price"], td:nth-child(3), .net-price, .your-price'
+            ) || findInShadow(item as HTMLElement, '.price, .cc_price, [class*="price"]')) as HTMLElement | null;
 
             const title = titleEl?.innerText.trim() || '';
             const priceText = priceEl?.innerText || '';
-            const price = parseFloat(priceText.replace(/[^0-9.]/g, '') || '0') || 0;
+            let price = parseFloat(priceText.replace(/[^0-9.]/g, '') || '0') || 0;
 
             const text = ((item as HTMLElement).innerText || item.textContent || '').toLowerCase();
             const html = item.innerHTML.toLowerCase();
 
             // Regex fallback for price if class selectors miss it
-            let finalPrice = price;
-            if (finalPrice === 0) {
-              const priceMatch = text.match(/£\s*([\d,]+\.\d{2})/);
+            if (price === 0) {
+              // Try to find a pattern like £12.34 or simply 12.34 in a likely cell
+              const priceMatch = text.match(/£\s*([\d,]+\.\d{2})/) || text.match(/contract\s*price\s*[:\s]*£?\s*([\d,]+\.\d{2})/i) || text.match(/your\s*price\s*[:\s]*£?\s*([\d,]+\.\d{2})/i);
               if (priceMatch) {
-                finalPrice = parseFloat(priceMatch[1].replace(/,/g, ''));
+                price = parseFloat((priceMatch[1] || priceMatch[2]).replace(/,/g, ''));
               }
             }
 
@@ -452,6 +497,7 @@ export class AahScraper {
               html.includes('green-check') ||
               html.includes('checkmark') ||
               html.includes('check_circle') ||
+              html.includes('success') ||
               text.includes('add to basket');
 
             const urlEl = titleEl as HTMLAnchorElement | null;
@@ -460,7 +506,7 @@ export class AahScraper {
             const pip = pipMatch ? pipMatch[1] : '';
 
             if (!title || title.toLowerCase() === 'product title') return null;
-            return { source: 'aah', title, price: finalPrice, inStock, url, pip } as ProductData;
+            return { source: 'aah', title, price, inStock, url, pip } as ProductData;
           })
           .filter((p): p is ProductData => Boolean(p));
 
@@ -468,30 +514,41 @@ export class AahScraper {
       }
 
       // 2. If no list items, check if we're on a Product Detail Page (PDP)
-      // Look for a large title and a clear price
-      const pdpTitleEl = document.querySelector(
-        'h1, .cc_product_title, .product-details h1, .product-details h2, .product-name',
-      ) as HTMLElement | null;
-      const pdpPriceEl = document.querySelector(
-        '.cc_price, .product-details .price, .price, span[id*="price"], .pdp-price',
-      ) as HTMLElement | null;
+      const pdpTitleEl = (document.querySelector(
+        'h1, .cc_product_title, .product-details h1, .product-details h2, .product-name'
+      ) || findInShadow(document, 'h1, .product-name')) as HTMLElement | null;
 
-      if (pdpTitleEl && pdpTitleEl.innerText.trim().length > 3) {
-        const title = pdpTitleEl.innerText.trim();
-        const priceText = pdpPriceEl?.innerText || '0';
-        const price = parseFloat(priceText.replace(/[^0-9.]/g, '') || '0') || 0;
+        const pdpPriceEl = (document.querySelector(
+          '.cc_price, .product-details .price, .price, span[id*="price"], .pdp-price, .contract-price, .net-price'
+        ) || findInShadow(document, '.price, .cc_price, [class*="price"], .contract-price')) as HTMLElement | null;
+  
+        if (pdpTitleEl && pdpTitleEl.innerText.trim().length > 3) {
+          const title = pdpTitleEl.innerText.trim();
+          const priceText = pdpPriceEl?.innerText || '0';
+          let price = parseFloat(priceText.replace(/[^0-9.]/g, '') || '0') || 0;
+  
+          const bodyText = document.body.innerText.toLowerCase();
+          const bodyHtml = document.body.innerHTML.toLowerCase();
+  
+          // Fallback PDP price from body text
+          if (price === 0) {
+            const priceMatch = bodyText.match(/£\s*([\d,]+\.\d{2})/) || bodyText.match(/contract\s*price\s*[:\s]*£?\s*([\d,]+\.\d{2})/i) || bodyText.match(/your\s*price\s*[:\s]*£?\s*([\d,]+\.\d{2})/i);
+            if (priceMatch) {
+              price = parseFloat((priceMatch[1] || priceMatch[2]).replace(/,/g, ''));
+            }
+          }
 
-        const bodyText = document.body.innerText.toLowerCase();
-        const bodyHtml = document.body.innerHTML.toLowerCase();
         const inStock =
           bodyText.includes('in stock') ||
           bodyText.includes('item available') ||
+          bodyText.includes('add to basket') ||
           bodyHtml.includes('green-check') ||
           bodyHtml.includes('checkmark') ||
           bodyHtml.includes('check_circle') ||
-          document.body.querySelector('.cc_stock_status, .inventory_status') !== null;
+          bodyHtml.includes('success') ||
+          document.body.querySelector('.cc_stock_status, .inventory_status, .slds-badge_success') !== null ||
+          findInShadow(document, '.inventory-status, .cc_stock_status') !== null;
 
-        // Ensure this isn't just a random page (e.g. login page) by checking for price/stock
         if (price > 0 || inStock) {
           const url = window.location.href;
           const pipMatch = document.body.innerText.match(/\b(\d{7,8})\b/);
@@ -502,6 +559,8 @@ export class AahScraper {
 
       return [];
     });
+    logger.debug(`AAH: extractProducts returned ${results.length} items.`);
+    return results;
   }
 
   // ─── Screenshot helper ────────────────────────────────────────────────────
@@ -524,14 +583,21 @@ export class AahScraper {
   // ─── Public API ───────────────────────────────────────────────────────────
 
   async scrape(query: string): Promise<ProductData[]> {
+    const scrapeStart = Date.now();
     const context = await this.newContext();
     const page = await context.newPage();
     await blockDumbResources(page);
+
+    // Log page crashes to help diagnose "Target crashed" errors
+    page.on('crash', () => {
+      logger.error(`AAH: Page CRASHED for query "${query}". Will attempt browser reset.`);
+    });
 
     try {
       logger.info(`AAH: Starting scrape for query: ${query}`);
 
       const directUrl = this.buildDirectSearchUrl(query);
+      logger.debug(`AAH: Direct search URL: ${directUrl}`);
       await this.ensureAuthenticated(page, directUrl);
       await this.saveSession(context);
 
@@ -553,20 +619,36 @@ export class AahScraper {
       }
 
       const products = await this.extractProducts(page);
-      logger.info(`AAH: Scrape complete. Found ${products.length} products.`);
+      const elapsed = Date.now() - scrapeStart;
+      logger.info(`AAH: Scrape complete in ${elapsed}ms. Found ${products.length} products.`);
 
       if (products.length === 0) {
         logger.warn(`AAH: No products found for "${query}". Saving diagnostic screenshot.`);
         await this.saveFailureScreenshot(page, `${query}-zero-results`);
+      } else if (products.some(p => p.price === 0)) {
+        logger.warn(`AAH: Some products have 0 price for "${query}". Saving diagnostic screenshot.`);
+        await this.saveFailureScreenshot(page, `${query}-zero-price`);
       }
 
       return products;
     } catch (error) {
-      logger.error(`AAH: Scrape failed: ${error}`);
-      await this.saveFailureScreenshot(page, String(query));
+      const elapsed = Date.now() - scrapeStart;
+      const errMsg = error instanceof Error ? error.message : String(error);
+      logger.error(`AAH: Scrape failed after ${elapsed}ms: ${errMsg}`);
+
+      // If the page crashed, reset the browser so next request starts fresh
+      if (errMsg.includes('Target crashed') || errMsg.includes('Session closed') || errMsg.includes('Connection closed')) {
+        logger.warn('AAH: Detected browser crash – resetting browser instance.');
+        if (this.browser) {
+          try { await this.browser.close(); } catch (_) { }
+          this.browser = null;
+        }
+      }
+
+      try { await this.saveFailureScreenshot(page, String(query)); } catch (_) { }
       throw error;
     } finally {
-      await context.close();
+      try { await context.close(); } catch (_) { }
     }
   }
 

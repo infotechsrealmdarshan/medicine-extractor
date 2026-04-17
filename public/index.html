@@ -19,6 +19,8 @@
         rel="stylesheet">
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- SheetJS: real .xlsx with column widths (CSV cannot store widths in Excel) -->
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <style>
         :root {
             --bg-dark: #020617;
@@ -101,7 +103,7 @@
             border-radius: 24px;
             padding: 0.5rem;
             display: flex;
-            align-items: center;
+            align-items: stretch;
             gap: 1rem;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             backdrop-filter: blur(10px);
@@ -113,14 +115,42 @@
             transform: translateY(-2px);
         }
 
+        .search-input-wrap {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 0.35rem;
+            min-width: 0;
+            padding: 0.75rem 0 0.75rem 0.25rem;
+        }
+
+        .search-hint {
+            font-size: 0.7rem;
+            color: #64748b;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-weight: 600;
+            padding-left: 0.25rem;
+        }
+
         .search-input {
             flex: 1;
+            width: 100%;
             background: transparent;
             border: none;
             color: white;
-            padding: 1rem;
-            font-size: 1.25rem;
+            padding: 0.35rem 0.5rem;
+            font-size: 1.15rem;
             outline: none;
+            line-height: 1.45;
+            resize: vertical;
+            min-height: 3.25rem;
+            max-height: 12rem;
+            font-family: inherit;
+        }
+
+        .search-input::placeholder {
+            color: #475569;
         }
 
         .search-btn {
@@ -262,6 +292,123 @@
             gap: 4rem;
             margin-top: 3rem;
             margin-bottom: 5rem;
+        }
+
+        .export-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+            padding: 1.25rem 1.5rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            margin-bottom: -2rem;
+        }
+
+        .export-toolbar h2 {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .export-toolbar p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-top: 0.25rem;
+        }
+
+        .export-btn {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border: none;
+            padding: 0.85rem 1.5rem;
+            border-radius: 14px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .export-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 24px rgba(16, 185, 129, 0.35);
+        }
+
+        .comparison-table-wrap {
+            overflow-x: auto;
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            background: rgba(15, 23, 42, 0.5);
+        }
+
+        .price-comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .price-comparison-table thead {
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background: #0f172a;
+        }
+
+        .price-comparison-table th {
+            text-align: left;
+            padding: 0.85rem 1rem;
+            color: #94a3b8;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            font-size: 0.65rem;
+            border-bottom: 1px solid var(--glass-border);
+            white-space: nowrap;
+        }
+
+        .price-comparison-table td {
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            color: #e2e8f0;
+            vertical-align: top;
+        }
+
+        .price-comparison-table tbody tr:hover td {
+            background: rgba(34, 211, 238, 0.04);
+        }
+
+        .price-comparison-table .col-pip {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 0.8rem;
+            color: #94a3b8;
+            white-space: nowrap;
+        }
+
+        .price-comparison-table .col-price {
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+            color: #f8fafc;
+            white-space: nowrap;
+        }
+
+        .price-comparison-table .cell-not-found {
+            color: #64748b;
+            font-style: italic;
+            font-weight: 600;
+        }
+
+        .price-comparison-table .col-lowest {
+            font-weight: 800;
+            color: var(--accent-emerald);
+            white-space: nowrap;
         }
 
         .source-section {
@@ -529,10 +676,14 @@
 
         <div class="search-container">
             <div class="search-box">
-                <i data-lucide="search" style="margin-left: 1.5rem; color: #64748b;"></i>
-                <input type="text" id="pip-query" class="search-input"
-                    placeholder="Search by PIP code or Product Name..." autocomplete="off">
-                <button id="scan-btn" class="search-btn">
+                <i data-lucide="search" style="margin-left: 1.5rem; margin-top: 1.25rem; color: #64748b; align-self: flex-start;"></i>
+                <div class="search-input-wrap">
+                    <label class="search-hint" for="pip-query">Multiple terms: one per line or comma-separated · Ctrl+Enter to scan</label>
+                    <textarea id="pip-query" class="search-input" rows="3"
+                        placeholder="e.g. 1234567&#10;Paracetamol 500mg&#10;…or: 1234567, Paracetamol 500mg"
+                        autocomplete="off"></textarea>
+                </div>
+                <button id="scan-btn" class="search-btn" style="align-self: center;">
                     SCAN NETWORK
                     <i data-lucide="zap" size="18"></i>
                 </button>
@@ -561,6 +712,24 @@
 
         <!-- Results Sections - Hidden until 100% -->
         <div id="results-container">
+            <div id="export-toolbar" class="export-toolbar" style="display: none;">
+                <div>
+                    <h2><i data-lucide="table-2" size="20"></i> Price comparison</h2>
+                    <p>One row per product (PIP): each supplier column shows price or Not found; last column is the cheapest supplier.</p>
+                </div>
+                <button type="button" id="export-excel-btn" class="export-btn">
+                    <i data-lucide="download" size="18"></i>
+                    Download Excel (.xlsx)
+                </button>
+            </div>
+
+            <div id="comparison-table-wrap" class="comparison-table-wrap" style="display: none;">
+                <table class="price-comparison-table" id="price-comparison-table">
+                    <thead id="price-comparison-thead"></thead>
+                    <tbody id="price-comparison-tbody"></tbody>
+                </table>
+            </div>
+
             <!-- AAH Section -->
             <section id="aah-section" class="source-section">
                 <div class="source-header">
@@ -637,6 +806,196 @@
 
         const scanBtn = document.getElementById('scan-btn');
         const queryInput = document.getElementById('pip-query');
+
+        const SUPPLIER_KEYS = ['aah', 'trident', 'myp-i-n', 'alliance', 'sigconnect'];
+        const SUPPLIER_LABELS = {
+            'aah': 'AAH Pharmaceuticals',
+            'trident': 'Trident Online',
+            'myp-i-n': 'MyPin Global',
+            'alliance': 'Alliance Healthcare',
+            'sigconnect': 'Sigma Connect'
+        };
+        const SUPPLIER_HEAD_SHORT = {
+            'aah': 'AAH',
+            'trident': 'Trident',
+            'myp-i-n': 'MyPin',
+            'alliance': 'Alliance',
+            'sigconnect': 'Sigma'
+        };
+
+        function parseQueries(raw) {
+            return raw
+                .split(/[\n,]+/)
+                .map((s) => s.trim())
+                .filter(Boolean);
+        }
+
+        function escapeHtml(s) {
+            return String(s)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;');
+        }
+
+        function normalizePipCode(pip) {
+            if (pip == null) return '';
+            const s = String(pip).trim();
+            if (!s || /^n\/?a$/i.test(s)) return '';
+            return s;
+        }
+
+        function pivotGroupKey(p) {
+            const pip = normalizePipCode(p.pip);
+            if (pip) return `pip:${pip.toLowerCase()}`;
+            // If no PIP, we group by a cleaned version of the title to avoid near-duplicates
+            const cleanTitle = (p.title || '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+            return `nop:${cleanTitle}`;
+        }
+
+        /** One row per PIP (or per title+term if no PIP); lowest price per supplier kept. */
+        function buildPivotRows(results) {
+            const map = new Map();
+            for (const p of results) {
+                const key = pivotGroupKey(p);
+                if (!map.has(key)) {
+                    const pipNorm = normalizePipCode(p.pip);
+                    map.set(key, {
+                        pipDisplay: pipNorm || '—',
+                        productName: (p.title || '').trim() || '—',
+                        prices: Object.fromEntries(SUPPLIER_KEYS.map((k) => [k, null]))
+                    });
+                }
+                const row = map.get(key);
+                const src = p.source;
+                if (!SUPPLIER_KEYS.includes(src)) continue;
+                const price = p.price != null && !isNaN(Number(p.price)) ? Number(p.price) : null;
+                const cur = row.prices[src];
+                if (price != null && (cur == null || price < cur)) {
+                    row.prices[src] = price;
+                }
+            }
+            return Array.from(map.values()).sort((a, b) => {
+                const pc = (a.pipDisplay || '').localeCompare(b.pipDisplay || '');
+                if (pc !== 0) return pc;
+                return (a.productName || '').localeCompare(b.productName || '');
+            });
+        }
+
+        function formatPriceOrNotFound(price) {
+            if (price == null || isNaN(price)) {
+                return { text: 'Not found', isFound: false };
+            }
+            return { text: `£${Number(price).toFixed(2)}`, isFound: true };
+        }
+
+        function findLowestSupplierLabel(row) {
+            let bestPrice = null;
+            const atBest = [];
+            for (const sk of SUPPLIER_KEYS) {
+                const pr = row.prices[sk];
+                if (pr == null || isNaN(pr) || pr <= 0) continue;
+                if (bestPrice === null || pr < bestPrice) {
+                    bestPrice = pr;
+                    atBest.length = 0;
+                    atBest.push(sk);
+                } else if (bestPrice !== null && Math.abs(pr - bestPrice) < 0.005) {
+                    atBest.push(sk);
+                }
+            }
+            if (!atBest.length) return 'Not found';
+            return atBest.map((k) => SUPPLIER_LABELS[k]).join(' · ');
+        }
+
+        function renderComparisonTable(results) {
+            const pivot = buildPivotRows(results);
+            const thead = document.getElementById('price-comparison-thead');
+            const headCells = [
+                '<th>PIP code</th>',
+                '<th>Product name</th>',
+                ...SUPPLIER_KEYS.map(
+                    (k) =>
+                        `<th title="${escapeHtml(SUPPLIER_LABELS[k])}">${escapeHtml(SUPPLIER_HEAD_SHORT[k])}</th>`
+                ),
+                '<th>Lowest</th>'
+            ];
+            thead.innerHTML = `<tr>${headCells.join('')}</tr>`;
+
+            priceComparisonTbody.innerHTML = '';
+            pivot.forEach((row) => {
+                const tr = document.createElement('tr');
+                const lowest = findLowestSupplierLabel(row);
+                const cells = [
+                    `<td class="col-pip">${escapeHtml(row.pipDisplay)}</td>`,
+                    `<td>${escapeHtml(row.productName)}</td>`
+                ];
+                SUPPLIER_KEYS.forEach((k) => {
+                    const { text, isFound } = formatPriceOrNotFound(row.prices[k]);
+                    const cls = isFound ? 'col-price' : 'cell-not-found';
+                    cells.push(`<td class="${cls}">${isFound ? text : escapeHtml(text)}</td>`);
+                });
+                cells.push(`<td class="col-lowest">${escapeHtml(lowest)}</td>`);
+                tr.innerHTML = cells.join('');
+                priceComparisonTbody.appendChild(tr);
+            });
+        }
+
+        /** Column widths in Excel character units (wch) — sized from content so text stays inside cells */
+        function columnWidthsFromAoa(aoa) {
+            if (!aoa.length) return [];
+            const colCount = aoa[0].length;
+            const widths = [];
+            for (let c = 0; c < colCount; c++) {
+                let maxLen = 12;
+                for (let r = 0; r < aoa.length; r++) {
+                    const v = aoa[r][c];
+                    const len = v == null || v === '' ? 0 : String(v).length;
+                    if (len > maxLen) maxLen = len;
+                }
+                const wch = Math.min(Math.max(maxLen + 3, 14), 70);
+                widths.push({ wch });
+            }
+            return widths;
+        }
+
+        function buildPriceSheetAoa(results) {
+            const pivot = buildPivotRows(results);
+            const header = [
+                'PIP code',
+                'Product name',
+                ...SUPPLIER_KEYS.map((k) => SUPPLIER_LABELS[k]),
+                'Lowest (supplier)'
+            ];
+            const body = pivot.map((row) => {
+                const lowest = findLowestSupplierLabel(row);
+                return [
+                    row.pipDisplay,
+                    row.productName,
+                    ...SUPPLIER_KEYS.map((k) => {
+                        const pr = row.prices[k];
+                        if (pr == null || isNaN(pr)) return 'Not found';
+                        return Number(pr);
+                    }),
+                    lowest
+                ];
+            });
+            return [header, ...body];
+        }
+
+        function exportResultsToSpreadsheet() {
+            if (!lastResultsSnapshot.length) return;
+            if (typeof XLSX === 'undefined') {
+                alert('Excel export library did not load. Check your connection and refresh the page.');
+                return;
+            }
+            const aoa = buildPriceSheetAoa(lastResultsSnapshot);
+            const ws = XLSX.utils.aoa_to_sheet(aoa);
+            ws['!cols'] = columnWidthsFromAoa(aoa);
+            const wb = XLSX.utils.book_new();
+            XLSX.utils.book_append_sheet(wb, ws, 'Price comparison');
+            const stamp = new Date().toISOString().slice(0, 19).replace(/[T:]/g, '-');
+            XLSX.writeFile(wb, `price-comparison-${stamp}.xlsx`);
+        }
         const loadingPanel = document.getElementById('loading-panel');
         const progressFill = document.getElementById('progress-fill');
         const percentText = document.getElementById('percent-text');
@@ -644,6 +1003,12 @@
         const resultsContainer = document.getElementById('results-container');
         const statusSubtitle = document.getElementById('status-subtitle');
         const noResultsPanel = document.getElementById('no-results');
+        const exportToolbar = document.getElementById('export-toolbar');
+        const comparisonTableWrap = document.getElementById('comparison-table-wrap');
+        const priceComparisonTbody = document.getElementById('price-comparison-tbody');
+        const exportExcelBtn = document.getElementById('export-excel-btn');
+
+        let lastResultsSnapshot = [];
 
         const processFlow = [
             { pct: 10, log: "Initializing headless browser clusters...", sub: "Cluster readiness 100%" },
@@ -670,69 +1035,128 @@
         }
 
         async function handleSearch() {
-            const query = queryInput.value.trim();
-            if (!query) return;
+            const queries = parseQueries(queryInput.value);
+            if (!queries.length) return;
+
+            const body = queries.length === 1
+                ? { query: queries[0] }
+                : { queries };
 
             // Reset UI
             resultsContainer.style.display = 'none';
+            exportToolbar.style.display = 'none';
+            comparisonTableWrap.style.display = 'none';
+            lastResultsSnapshot = [];
             resultsContainer.querySelectorAll('.source-grid').forEach(g => g.innerHTML = '');
             loadingPanel.style.display = 'block';
             progressFill.style.width = '0%';
             percentText.innerText = '0%';
             logContainer.innerHTML = '';
 
-            let currentPct = 0;
-            let logIndex = 0;
+            const progressFlowMessages = [
+                "Establishing secure handshakes...",
+                "Bypassing portal authentication...",
+                "Injecting extraction scripts...",
+                "Executing deep-scanning search...",
+                "Parsing product metadata...",
+                "Validating stock availability...",
+                "Consolidating dataset results...",
+                "Finalizing verification..."
+            ];
 
-            const progressTimer = setInterval(() => {
-                if (currentPct < 98) {
-                    currentPct += Math.floor(Math.random() * 3) + 1;
-                    if (currentPct > 98) currentPct = 98;
-
-                    progressFill.style.width = `${currentPct}%`;
-                    percentText.innerText = `${currentPct}%`;
-
-                    // Update logs based on percentages
-                    if (logIndex < processFlow.length && currentPct >= processFlow[logIndex].pct) {
-                        addLog(processFlow[logIndex].log, true);
-                        statusSubtitle.innerText = processFlow[logIndex].sub;
-                        logIndex++;
-                    }
+            let lastPct = 0;
+            let displayPct = 0;
+            
+            // Smoothly glide the progress bar to the target percentage
+            const smoothTimer = setInterval(() => {
+                if (displayPct < lastPct) {
+                    displayPct += 0.5;
+                    progressFill.style.width = `${displayPct}%`;
+                    percentText.innerText = `${Math.floor(displayPct)}%`;
+                } else if (displayPct < 98 && lastPct > 0) {
+                    // Creep very slowly forward while waiting for next real update
+                    displayPct += 0.05;
+                    progressFill.style.width = `${displayPct}%`;
+                    percentText.innerText = `${Math.floor(displayPct)}%`;
                 }
-            }, 300);
+            }, 50);
+
+            const updateProgress = (pct, logText, subText) => {
+                if (pct > lastPct) lastPct = pct;
+                if (logText) addLog(logText, true);
+                if (subText) statusSubtitle.innerText = subText;
+            };
 
             try {
-                const response = await fetch('/api/search', {
+                const response = await fetch('/api/search?stream=true', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ query })
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'text/event-stream' },
+                    body: JSON.stringify(body)
                 });
-                const data = await response.json();
 
-                clearInterval(progressTimer);
-                progressFill.style.width = '100%';
-                percentText.innerText = '100%';
-                addLog("Extraction finalized. Preparing high-resolution display.");
-                statusSubtitle.innerText = "System ready.";
+                if (!response.body) throw new Error("No response body");
+                const reader = response.body.getReader();
+                const decoder = new TextDecoder();
+                let buffer = "";
 
-                setTimeout(() => {
-                    loadingPanel.style.display = 'none';
-                    if (data.success) {
-                        resultsContainer.style.display = 'flex';
-                        renderResults(data.data);
-                    } else {
-                        alert("Extraction failed. Check supplier status.");
+                while (true) {
+                    const { value, done } = await reader.read();
+                    if (done) break;
+
+                    buffer += decoder.decode(value, { stream: true });
+                    const parts = buffer.split("\n\n");
+                    buffer = parts.pop();
+
+                    for (const part of parts) {
+                        if (!part.startsWith("data: ")) continue;
+                        const data = JSON.parse(part.substring(6));
+
+                        if (data.type === 'progress') {
+                            const pct = Math.floor((data.index / data.total) * 95);
+                            const logMsg = progressFlowMessages[data.index % progressFlowMessages.length] || "Processing batch...";
+                            updateProgress(pct, `Query processed: ${data.query} (${data.resultsFound} found)`, logMsg);
+                        } else if (data.type === 'done') {
+                            clearInterval(smoothTimer);
+                            updateProgress(100, "Extraction finalized. Preparing results hub.", "System ready.");
+                            progressFill.style.width = '100%';
+                            percentText.innerText = '100%';
+                            
+                            setTimeout(() => {
+                                loadingPanel.style.display = 'none';
+                                resultsContainer.style.display = 'flex';
+                                let rows = data.data;
+                                const terms = data.meta && Array.isArray(data.meta.queries) ? data.meta.queries : [];
+                                if (terms.length === 1 && Array.isArray(rows)) {
+                                    const t = terms[0];
+                                    rows = rows.map((p) => (p.matchedQuery ? p : { ...p, matchedQuery: t }));
+                                }
+                                renderResults(rows);
+                            }, 1000);
+                        } else if (data.type === 'error') {
+                            throw new Error(data.message);
+                        }
                     }
-                }, 1000);
-
+                }
             } catch (err) {
-                clearInterval(progressTimer);
-                alert("Neural link lost. Connection refused.");
+                clearInterval(smoothTimer);
+                console.error(err);
+                alert("Neural link lost: " + err.message);
                 loadingPanel.style.display = 'none';
             }
         }
 
         function renderResults(results) {
+            lastResultsSnapshot = Array.isArray(results) ? results : [];
+            if (lastResultsSnapshot.length > 0) {
+                exportToolbar.style.display = 'flex';
+                comparisonTableWrap.style.display = 'block';
+                renderComparisonTable(lastResultsSnapshot);
+                lucide.createIcons();
+            } else {
+                exportToolbar.style.display = 'none';
+                comparisonTableWrap.style.display = 'none';
+            }
+
             const groups = {
                 'aah': { items: results.filter(r => r.source === 'aah'), web: 'AAH Point' },
                 'trident': { items: results.filter(r => r.source === 'trident'), web: 'Trident Online' },
@@ -776,7 +1200,7 @@
                                 </div>
                                 <div>
                                     <h3>${product.title}</h3>
-                                    <div class="pip-code">PIP: ${product.pip || 'N/A'}</div>
+                                    <div class="pip-code">PIP: ${product.pip || 'N/A'}${product.matchedQuery ? ` · <span style="color:#94a3b8;">Term:</span> ${escapeHtml(product.matchedQuery)}` : ''}</div>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -808,9 +1232,14 @@
             resultsContainer.scrollIntoView({ behavior: 'smooth' });
         }
 
+        exportExcelBtn.addEventListener('click', exportResultsToSpreadsheet);
+
         scanBtn.addEventListener('click', handleSearch);
-        queryInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSearch();
+        queryInput.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                handleSearch();
+            }
         });
     </script>
 </body>

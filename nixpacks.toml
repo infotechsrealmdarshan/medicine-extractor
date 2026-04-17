@@ -1,0 +1,9 @@
+# Nixpacks configuration to speed up Railway builds for Playwright/Puppeteer
+[phases.setup]
+nixPkgs = ["nodejs", "glibc", "nss", "nspr", "atk", "at-spi2-atk", "cups", "libdrm", "libxkbcommon", "libXcomposite", "libXdamage", "libXext", "libXfixes", "libXrandr", "libgbm", "alsa-lib", "pango", "cairo", "at-spi2-core", "libxshmfence", "vulkan-loader"]
+
+[phases.install]
+cmds = ["npm install"]
+
+[phases.build]
+cmds = ["npm run build"]
